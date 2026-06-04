@@ -1,0 +1,63 @@
+#Nicaragua
+Managua, Nicaragua
+Granada, Nicaragua
+León, Nicaragua
+Masaya, Nicaragua
+Chinandega, Nicaragua
+Estelí, Nicaragua
+Matagalpa, Nicaragua
+Ciudad Sandino, Nicaragua
+Tipitapa, Nicaragua
+
+#Honduras
+Tegucigalpa, Honduras
+San Pedro Sula, Honduras
+Choloma, Honduras
+El Progreso, Honduras
+La Ceiba, Honduras
+Choluteca, Honduras
+Puerto Cortes, Honduras
+Villanueva, Honduras
+Danlí, Honduras
+
+#El Salvador
+San Salvador, El Salvador
+Santa Ana, El Salvador
+Soyapango, El Salvador
+San Miguel, El Salvador
+Ahuachapán, El Salvador
+Ilopango, El Salvador
+Santa Tecla, El Salvador
+Apopa, El Salvador
+Delgado, El Salvador
+
+#Costa Rica
+San Jose, Costa Rica
+Alajuela, Costa Rica
+Cartago, Costa Rica
+Limon, Costa Rica
+Desamparados, Costa Rica
+San Carlos, Costa Rica
+Pérez Zeledón, Costa Rica
+
+#Guatemala
+Ciudad de Guatemala, Guatemala
+Mixco, Guatemala
+Villa Nueva, Guatemala
+Quetzaltenango, Guatemala
+Escuintla, Guatemala
+Cobán, Guatemala
+Jalapa, Guatemala
+Villa Canales, Guatemala
+Jutiapa, Guatemala
+Chimaltenango, Guatemala
+Huehuetenango, Guatemala
+
+#Panamá
+Ciudad de Panamá, Panamá
+San Miguelito, Panamá
+Arraiján, Panamá
+David, Panamá
+Colón, Panamá
+La Chorrera, Panamá
+Juan Díaz, Panamá

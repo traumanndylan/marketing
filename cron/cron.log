@@ -1,0 +1,716 @@
+Starting OpenWA
+Waiting for OpenWA
+
+> openwa@0.1.6 dev
+> concurrently -n api,dashboard -c blue,green "npm run start:dev" "npm run dashboard:dev"
+
+[dashboard] 
+[dashboard] > openwa@0.1.6 dashboard:dev
+[dashboard] > cd dashboard && npm run dev
+[dashboard] 
+[api] 
+[api] > openwa@0.1.6 start:dev
+[api] > nest start --watch
+[api] 
+[dashboard] 
+[dashboard] > dashboard@0.1.0 dev
+[dashboard] > vite
+[dashboard] 
+[dashboard] 
+[dashboard]   VITE v7.3.1  ready in 329 ms
+[dashboard] 
+[dashboard]   ➜  Local:   http://localhost:2886/
+[dashboard]   ➜  Network: use --host to expose
+[api] [2J[3J[H[[90m10:50:02 AM[0m] Starting compilation in watch mode...
+[api] 
+Waiting for OpenWA(3s)
+Waiting for OpenWA(6s)
+[api] [[90m10:50:09 AM[0m] Found 0 errors. Watching for file changes.
+[api] 
+Waiting for OpenWA(9s)
+[api] [Bootstrap] Loading .env from: /home/dylan/projects/OpenWA/.env
+[api] ◇ injected env (0) from .env // tip: ◈ secrets for agents [www.dotenvx.com]
+[api] [Bootstrap] Loading saved configuration from: /home/dylan/projects/OpenWA/data/.env.generated
+[api] ◇ injected env (2) from data/.env.generated // tip: ⌘ override existing { override: true }
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +27ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mHooksModule dependencies initialized[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mLoggerModule dependencies initialized[39m[38;5;3m +1ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mDockerModule dependencies initialized[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +2ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mHealthModule dependencies initialized[39m[38;5;3m +0ms[39m
+[api] {"timestamp":"2026-06-04T16:50:11.683Z","level":"info","context":"CacheService","message":"CacheService: enabled=false, REDIS_ENABLED=false"}
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +3ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSettingsModule dependencies initialized[39m[38;5;3m +1ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCacheModule dependencies initialized[39m[38;5;3m +11ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mStorageModule dependencies initialized[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPluginsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mThrottlerModule dependencies initialized[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mEngineModule dependencies initialized[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPluginsApiModule dependencies initialized[39m[38;5;3m +1ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmCoreModule dependencies initialized[39m[38;5;3m +84ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mWebhookModule dependencies initialized[39m[38;5;3m +1ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mStatsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mInfraModule dependencies initialized[39m[38;5;3m +12ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmCoreModule dependencies initialized[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mEventsModule dependencies initialized[39m[38;5;3m +1ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuditModule dependencies initialized[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mContactModule dependencies initialized[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mGroupModule dependencies initialized[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mLabelModule dependencies initialized[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mChannelModule dependencies initialized[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mStatusModule dependencies initialized[39m[38;5;3m +1ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCatalogModule dependencies initialized[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mMessageModule dependencies initialized[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSessionModule dependencies initialized[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[EventsGateway] [39m[32mWebSocket Gateway initialized[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[WebSocketsController] [39m[32mEventsGateway subscribed to the "message" message[39m[38;5;3m +1ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuditController {/api/audit}:[39m[38;5;3m +2ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/audit, GET} route[39m[38;5;3m +3ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/api/auth/api-keys}:[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/auth/api-keys, POST} route[39m[38;5;3m +1ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/auth/api-keys, GET} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/auth/api-keys/:id, GET} route[39m[38;5;3m +1ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/auth/api-keys/:id, PUT} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/auth/api-keys/:id, DELETE} route[39m[38;5;3m +1ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/auth/api-keys/:id/revoke, POST} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthValidateController {/api/auth}:[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/auth/validate, POST} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mSessionController {/api/sessions}:[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions, POST} route[39m[38;5;3m +1ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions, GET} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:id, GET} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:id, DELETE} route[39m[38;5;3m +1ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:id/start, POST} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:id/stop, POST} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:id/qr, GET} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:id/groups, GET} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/stats/overview, GET} route[39m[38;5;3m +1ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mWebhookController {/api/sessions/:sessionId/webhooks}:[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/webhooks, POST} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/webhooks, GET} route[39m[38;5;3m +1ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/webhooks/:id, GET} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/webhooks/:id, PUT} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/webhooks/:id/test, POST} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/webhooks/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mWebhooksListController {/api/webhooks}:[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/webhooks, GET} route[39m[38;5;3m +1ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mMessageController {/api/sessions/:sessionId/messages}:[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/messages, GET} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/messages/send-text, POST} route[39m[38;5;3m +1ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/messages/send-image, POST} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/messages/send-video, POST} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/messages/send-audio, POST} route[39m[38;5;3m +1ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/messages/send-document, POST} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/messages/send-location, POST} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/messages/send-contact, POST} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/messages/send-sticker, POST} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/messages/reply, POST} route[39m[38;5;3m +1ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/messages/forward, POST} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/messages/react, POST} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/messages/:chatId/:messageId/reactions, GET} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/messages/delete, POST} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/messages/send-bulk, POST} route[39m[38;5;3m +1ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/messages/batch/:batchId, GET} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/messages/batch/:batchId/cancel, POST} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mHealthController {/api/health}:[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/health, GET} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/health/live, GET} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/health/ready, GET} route[39m[38;5;3m +1ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mSettingsController {/api/settings}:[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/settings, GET} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/settings, PUT} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mInfraController {/api/infra}:[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/infra/status, GET} route[39m[38;5;3m +1ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/infra/engines, GET} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/infra/engines/current, GET} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/infra/config, PUT} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/infra/restart, POST} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/infra/health, GET} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/infra/export-data, GET} route[39m[38;5;3m +1ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/infra/import-data, POST} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/infra/storage/files/count, GET} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/infra/storage/export, GET} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/infra/storage/import, POST} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mContactController {/api/sessions/:sessionId/contacts}:[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/contacts, GET} route[39m[38;5;3m +1ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/contacts/:contactId, GET} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/contacts/check/:number, GET} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/contacts/:contactId/profile-picture, GET} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/contacts/:contactId/block, POST} route[39m[38;5;3m +1ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/contacts/:contactId/block, DELETE} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mGroupController {/api/sessions/:sessionId/groups}:[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/groups, GET} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/groups/:groupId, GET} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/groups, POST} route[39m[38;5;3m +1ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/groups/:groupId/participants, POST} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/groups/:groupId/participants, DELETE} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/groups/:groupId/participants/promote, POST} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/groups/:groupId/participants/demote, POST} route[39m[38;5;3m +1ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/groups/:groupId/subject, PUT} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/groups/:groupId/description, PUT} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/groups/:groupId/leave, POST} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/groups/:groupId/invite-code, GET} route[39m[38;5;3m +1ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/groups/:groupId/invite-code/revoke, POST} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mLabelController {/api/sessions/:sessionId/labels}:[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/labels, GET} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/labels/:labelId, GET} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/labels/chat/:chatId, GET} route[39m[38;5;3m +1ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/labels/chat/:chatId, POST} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/labels/chat/:chatId/:labelId, DELETE} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mChannelController {/api/sessions/:sessionId/channels}:[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/channels, GET} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/channels/:channelId, GET} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/channels/:channelId/messages, GET} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/channels/subscribe, POST} route[39m[38;5;3m +1ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/channels/:channelId, DELETE} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mStatsController {/api/stats}:[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/stats/overview, GET} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/stats/messages, GET} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/stats/sessions/:sessionId, GET} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mStatusController {/api/sessions/:sessionId/status}:[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/status, GET} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/status/:contactId, GET} route[39m[38;5;3m +1ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/status/send-text, POST} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/status/send-image, POST} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/status/send-video, POST} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/status/:statusId, DELETE} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mCatalogController {/api/sessions/:sessionId}:[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/catalog, GET} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/catalog/products, GET} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/catalog/products/:productId, GET} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/messages/send-product, POST} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:sessionId/messages/send-catalog, POST} route[39m[38;5;3m +1ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mPluginsController {/api/plugins}:[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/plugins, GET} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/plugins/:id, GET} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/plugins/:id/enable, POST} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/plugins/:id/disable, POST} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/plugins/:id/config, PUT} route[39m[38;5;3m +0ms[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/plugins/:id/health, GET} route[39m[38;5;3m +0ms[39m
+[api] {"timestamp":"2026-06-04T16:50:11.969Z","level":"info","context":"PluginLoaderService","message":"Loaded 0 plugins","action":"plugins_loaded","count":0}
+[api] {"timestamp":"2026-06-04T16:50:11.971Z","level":"info","context":"AuthService","message":""}
+[api] {"timestamp":"2026-06-04T16:50:11.971Z","level":"info","context":"AuthService","message":"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"}
+[api] {"timestamp":"2026-06-04T16:50:11.971Z","level":"info","context":"AuthService","message":""}
+[api] {"timestamp":"2026-06-04T16:50:11.971Z","level":"info","context":"AuthService","message":"  🟢 Welcome to OpenWA - WhatsApp API Gateway"}
+[api] {"timestamp":"2026-06-04T16:50:11.971Z","level":"info","context":"AuthService","message":""}
+[api] {"timestamp":"2026-06-04T16:50:11.972Z","level":"info","context":"AuthService","message":"  📊 Dashboard: http://localhost:2886"}
+[api] {"timestamp":"2026-06-04T16:50:11.972Z","level":"info","context":"AuthService","message":"  📚 API Docs:  http://localhost:2785/api/docs"}
+[api] {"timestamp":"2026-06-04T16:50:11.972Z","level":"info","context":"AuthService","message":""}
+[api] {"timestamp":"2026-06-04T16:50:11.972Z","level":"info","context":"AuthService","message":"  🔑 API Key:"}
+[api] {"timestamp":"2026-06-04T16:50:11.972Z","level":"info","context":"AuthService","message":"     dev-admin-key"}
+[api] {"timestamp":"2026-06-04T16:50:11.972Z","level":"info","context":"AuthService","message":""}
+[api] {"timestamp":"2026-06-04T16:50:11.972Z","level":"info","context":"AuthService","message":"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"}
+[api] {"timestamp":"2026-06-04T16:50:11.972Z","level":"info","context":"AuthService","message":""}
+[api] {"timestamp":"2026-06-04T16:50:11.973Z","level":"info","context":"PluginLoaderService","message":"[whatsapp-web.js] WhatsApp-web.js engine plugin loaded","pluginId":"whatsapp-web.js"}
+[api] {"timestamp":"2026-06-04T16:50:11.973Z","level":"info","context":"PluginLoaderService","message":"[whatsapp-web.js] WhatsApp-web.js engine plugin enabled","pluginId":"whatsapp-web.js"}
+[api] {"timestamp":"2026-06-04T16:50:11.973Z","level":"info","context":"PluginLoaderService","message":"Plugin enabled: WhatsApp Web.js Engine","pluginId":"whatsapp-web.js","action":"plugin_enabled"}
+[api] {"timestamp":"2026-06-04T16:50:11.973Z","level":"info","context":"EngineFactory","message":"Engine plugin enabled: whatsapp-web.js","action":"engine_enabled","engineType":"whatsapp-web.js"}
+[api] [33m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [33m   WARN[39m [38;5;3m[DockerService] [39m[33mDocker socket not available. Container orchestration disabled.[39m
+[api] [33m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [33m   WARN[39m [38;5;3m[DockerService] [39m[33mconnect EACCES /var/run/docker.sock[39m
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:11 AM [32m    LOG[39m [38;5;3m[DockerService] [39m[32m[Bootstrap Orchestration] Docker not available, skipping[39m
+[api] {"timestamp":"2026-06-04T16:50:11.988Z","level":"info","context":"SessionService","message":"Auto-starting 1 session(s) on startup...","action":"startup_autostart","count":1}
+[api] {"timestamp":"2026-06-04T16:50:11.991Z","level":"info","context":"SessionService","message":"Initializing engine for session: marketing-bot","sessionId":"3b09b399-6e93-4672-8da3-e845b1e7fbe2","action":"engine_init","proxyEnabled":false}
+Waiting for OpenWA(12s)
+Waiting for OpenWA(15s)
+Waiting for OpenWA(18s)
+[api] [32m[Nest] 7318  - [39m06/04/2026, 10:50:20 AM [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +8202ms[39m
+[api] 🚀 OpenWA is running on: http://localhost:2785
+[api] 📚 Swagger docs: http://localhost:2785/api/docs
+Waiting for OpenWA(21s)
+
+Session Verified
+[api] [31m[Nest] 7318  - [39m06/04/2026, 10:50:22 AM [31m  ERROR[39m [38;5;3m[ExceptionsHandler] [39mError: WhatsApp client is not ready
+[api]     at WhatsAppWebJsAdapter.ensureReady [90m(/home/dylan/projects/OpenWA/[39msrc/engine/adapters/whatsapp-web-js.adapter.ts:920:13[90m)[39m
+[api]     at WhatsAppWebJsAdapter.sendTextMessage [90m(/home/dylan/projects/OpenWA/[39msrc/engine/adapters/whatsapp-web-js.adapter.ts:273:10[90m)[39m
+[api]     at MessageService.sendText [90m(/home/dylan/projects/OpenWA/[39msrc/modules/message/message.service.ts:50:35[90m)[39m
+[api]     at async [90m/home/dylan/projects/OpenWA/[39mnode_modules/[4m@nestjs/core[24m/router/router-execution-context.js:46:28
+[api]     at async [90m/home/dylan/projects/OpenWA/[39mnode_modules/[4m@nestjs/core[24m/router/router-proxy.js:9:17
+[api] {"timestamp":"2026-06-04T16:50:23.617Z","level":"info","context":"SessionService","message":"Session ready: 50587042859","sessionId":"3b09b399-6e93-4672-8da3-e845b1e7fbe2","phone":"50587042859","pushName":"Alex Guevara","action":"ready"}
+[api] [31m[Nest] 7318  - [39m06/04/2026, 10:50:47 AM [31m  ERROR[39m [38;5;3m[ExceptionsHandler] [39mError: No LID for user
+[api] s (https://static.whatsapp.net/rsrc.php/v4/yA/r/llpHPzBZ1ZW.js:80:180)
+[api]     at ExecutionContext.#evaluate [90m(/home/dylan/projects/OpenWA/[39mnode_modules/[4mpuppeteer-core[24m/src/cdp/ExecutionContext.ts:456:34[90m)[39m
+[api]     at async ExecutionContext.evaluate [90m(/home/dylan/projects/OpenWA/[39mnode_modules/[4mpuppeteer-core[24m/src/cdp/ExecutionContext.ts:293:12[90m)[39m
+[api]     at async IsolatedWorld.evaluate [90m(/home/dylan/projects/OpenWA/[39mnode_modules/[4mpuppeteer-core[24m/src/cdp/IsolatedWorld.ts:196:12[90m)[39m
+[api]     at async CdpFrame.evaluate [90m(/home/dylan/projects/OpenWA/[39mnode_modules/[4mpuppeteer-core[24m/src/api/Frame.ts:488:12[90m)[39m
+[api]     at async CdpPage.evaluate [90m(/home/dylan/projects/OpenWA/[39mnode_modules/[4mpuppeteer-core[24m/src/api/Page.ts:2362:12[90m)[39m
+[api]     at async Client.sendMessage [90m(/home/dylan/projects/OpenWA/[39mnode_modules/[4mwhatsapp-web.js[24m/src/Client.js:1533:25[90m)[39m
+[api]     at async WhatsAppWebJsAdapter.sendTextMessage [90m(/home/dylan/projects/OpenWA/[39msrc/engine/adapters/whatsapp-web-js.adapter.ts:274:17[90m)[39m
+[api]     at async MessageService.sendText [90m(/home/dylan/projects/OpenWA/[39msrc/modules/message/message.service.ts:50:22[90m)[39m
+[api]     at async [90m/home/dylan/projects/OpenWA/[39mnode_modules/[4m@nestjs/core[24m/router/router-execution-context.js:46:28
+[api]     at async [90m/home/dylan/projects/OpenWA/[39mnode_modules/[4m@nestjs/core[24m/router/router-proxy.js:9:17
+[api]     at i (https://static.whatsapp.net/rsrc.php/v4/yA/r/llpHPzBZ1ZW.js:109:348)
+[api]     at l (https://static.whatsapp.net/rsrc.php/v4/yA/r/llpHPzBZ1ZW.js:109:124)
+[api]     at <anonymous> (https://static.whatsapp.net/rsrc.php/v4ijEJ4/yu/l/es_LA-j/rr_Uo9mgdz8.js:719:1844)
+[api]     at h (https://static.whatsapp.net/rsrc.php/v4ieia4/yp/l/es_LA-j/BJWls--F9V3kJSqyEN5zRAlafk-I6eyftWl_HC4ZDPfuqbSK34kZ9M-aTb_5H5wMWW_GoL0hmMjqzBsJUL-6XRjLNBAqpsGikxsZ8DCX7vGZ0_4vaLwQbYin_BhnmWVUkOZO5r7jA80eoYXYe_SWdbl7-qNz-BtzLpzbG5-HYgZ0Zo61NkmbK5hmdJfvVRUh9LLBrE.js:1576:1489)
+[api]     at s (https://static.whatsapp.net/rsrc.php/v4/yA/r/llpHPzBZ1ZW.js:79:179)
+[api] {"timestamp":"2026-06-04T16:51:27.189Z","level":"info","context":"SessionService","message":"Session ready: 50587042859","sessionId":"3b09b399-6e93-4672-8da3-e845b1e7fbe2","phone":"50587042859","pushName":"Alex Guevara","action":"ready"}
+[api] {"timestamp":"2026-06-04T16:51:27.191Z","level":"info","context":"SessionService","message":"Session ready: 50587042859","sessionId":"3b09b399-6e93-4672-8da3-e845b1e7fbe2","phone":"50587042859","pushName":"Alex Guevara","action":"ready"}
+[api] {"timestamp":"2026-06-04T16:51:27.713Z","level":"warn","context":"SessionService","message":"Session disconnected: LOGOUT","sessionId":"3b09b399-6e93-4672-8da3-e845b1e7fbe2","reason":"LOGOUT","action":"disconnected"}
+[api] {"timestamp":"2026-06-04T16:51:27.715Z","level":"info","context":"SessionService","message":"Scheduling reconnect attempt 1/5 in 5s","sessionId":"3b09b399-6e93-4672-8da3-e845b1e7fbe2","attempt":1,"delayMs":5311.805814836952,"action":"reconnect_scheduled"}
+[api] /home/dylan/projects/OpenWA/node_modules/puppeteer-core/src/common/CallbackRegistry.ts:103
+[api]       this._reject(callback, new TargetCloseError('Target closed'));
+[api]                              ^
+[api] 
+[api] TargetCloseError: Protocol error (Runtime.evaluate): Target closed
+[api]     at CallbackRegistry.clear (/home/dylan/projects/OpenWA/node_modules/puppeteer-core/src/common/CallbackRegistry.ts:103:30)
+[api]     at CdpCDPSession.onClosed (/home/dylan/projects/OpenWA/node_modules/puppeteer-core/src/cdp/CdpSession.ts:163:21)
+[api]     at Connection.onMessage (/home/dylan/projects/OpenWA/node_modules/puppeteer-core/src/cdp/Connection.ts:198:17)
+[api]     at WebSocket.<anonymous> (/home/dylan/projects/OpenWA/node_modules/puppeteer-core/src/node/NodeWebSocketTransport.ts:46:24)
+[api]     at callListener (/home/dylan/projects/OpenWA/node_modules/puppeteer-core/node_modules/ws/lib/event-target.js:290:14)
+[api]     at WebSocket.onMessage (/home/dylan/projects/OpenWA/node_modules/puppeteer-core/node_modules/ws/lib/event-target.js:209:9)
+[api]     at WebSocket.emit (node:events:519:28)
+[api]     at Receiver.receiverOnMessage (/home/dylan/projects/OpenWA/node_modules/puppeteer-core/node_modules/ws/lib/websocket.js:1225:20)
+[api]     at Receiver.emit (node:events:519:28)
+[api]     at Immediate.<anonymous> (/home/dylan/projects/OpenWA/node_modules/puppeteer-core/node_modules/ws/lib/receiver.js:601:16)
+[api]     at process.processImmediate (node:internal/timers:484:21) {
+[api]   cause: ProtocolError
+[api]       at Callback.<instance_members_initializer> (/home/dylan/projects/OpenWA/node_modules/puppeteer-core/src/common/CallbackRegistry.ts:129:12)
+[api]       at new Callback (/home/dylan/projects/OpenWA/node_modules/puppeteer-core/src/common/CallbackRegistry.ts:134:3)
+[api]       at CallbackRegistry.create (/home/dylan/projects/OpenWA/node_modules/puppeteer-core/src/common/CallbackRegistry.ts:32:22)
+[api]       at Connection._rawSend (/home/dylan/projects/OpenWA/node_modules/puppeteer-core/src/cdp/Connection.ts:150:22)
+[api]       at CdpCDPSession.send (/home/dylan/projects/OpenWA/node_modules/puppeteer-core/src/cdp/CdpSession.ts:104:29)
+[api]       at ExecutionContext.#evaluate (/home/dylan/projects/OpenWA/node_modules/puppeteer-core/src/cdp/ExecutionContext.ts:392:10)
+[api]       at ExecutionContext.evaluate (/home/dylan/projects/OpenWA/node_modules/puppeteer-core/src/cdp/ExecutionContext.ts:293:32)
+[api]       at IsolatedWorld.evaluate (/home/dylan/projects/OpenWA/node_modules/puppeteer-core/src/cdp/IsolatedWorld.ts:196:26)
+[api]       at CdpFrame.evaluate (/home/dylan/projects/OpenWA/node_modules/puppeteer-core/src/api/Frame.ts:488:35)
+[api]       at CdpFrame.<anonymous> (/home/dylan/projects/OpenWA/node_modules/puppeteer-core/src/util/decorators.ts:63:21)
+[api]       at CdpPage.evaluate (/home/dylan/projects/OpenWA/node_modules/puppeteer-core/src/api/Page.ts:2362:35)
+[api]       at Client.inject (/home/dylan/projects/OpenWA/node_modules/whatsapp-web.js/src/Client.js:126:38)
+[api]       at async /home/dylan/projects/OpenWA/node_modules/whatsapp-web.js/src/Client.js:503:13
+[api] }
+[api] 
+[api] Node.js v22.22.3
+Sending 15 messages.
+[1/15] Sending message to  at 50557917487...
+Failed: {"statusCode":500,"message":"Internal server error"}
+[1/15] Sending message to  at 50581455442...
+Done
+[2/15] Sending message to  at 50587668020...
+Failed: {"statusCode":500,"message":"Internal server error"}
+[2/15] Sending message to  at 50587164323...
+Done
+[3/15] Sending message to  at 50585119560...
+Done
+[4/15] Sending message to  at 50557497067...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd06540>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50586683826...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd07380>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50582374482...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd07bc0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50578403920...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd07bf0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50586594828...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd073e0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50586138468...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd072f0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50557917787...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd60770>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50589484557...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd61070>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50584976101...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd61940>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50588523774...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd06ff0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50586121737...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd075f0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50587029702...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd07d10>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50576163974...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd60980>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50575396439...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd61a60>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50577256036...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd62390>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50589252166...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd07620>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50558045919...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd065d0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50558604404...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557d7ced20>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50587071359...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd606b0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50587893255...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd614f0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50585478316...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd62cc0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50584356738...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd06300>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50588028689...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd07b60>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50581253673...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557d7595e0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50576653167...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd60b00>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50576711912...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd605c0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50586374121...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd635c0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50585754153...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd078f0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50585444684...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd07aa0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50586934988...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557dabb800>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50588441981...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd606b0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50557723094...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd62720>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50558149131...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd63f50>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50576720975...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd62450>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50589003683...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd62de0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50583667561...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd06c60>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50587778733...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd06690>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50577032323...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557e9177d0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50584220798...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd888f0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50585856065...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd06330>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50587961490...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd06d80>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50589158915...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd60e30>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50578190037...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd60aa0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50584668009...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd88050>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50585845371...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd89280>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50558567431...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd60680>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50584241252...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557d7ce000>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50584072520...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd07950>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50557538209...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd07020>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50577860447...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd88050>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50585237486...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd89be0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50575599048...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd07d40>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50575457528...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd063f0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50587511189...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd604d0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50586777534...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd60320>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50581504648...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd88350>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50585678088...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd8a510>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50588602425...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd60920>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50586058024...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557ddc8350>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50583259709...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd06450>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50589282677...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd07710>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50558121806...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd89430>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50577408739...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd8ae40>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50589389585...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd07d10>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50576854781...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd06f90>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50582580840...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd604d0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50589867041...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd60fe0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50584410780...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd88ad0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50586410510...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd8b7d0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50585431712...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd60f20>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50582459096...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557d0c36b0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50586015447...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd07530>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50588502487...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd07380>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50583752427...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd89760>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50588984023...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cda01a0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50586936739...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd079e0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50586804039...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd076e0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50589888452...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557ce829c0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50588784362...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd60800>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50584061615...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd61010>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50587707526...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cda0b00>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50585479005...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd89640>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50588524932...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd8b380>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50586389193...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd8aea0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50584205915...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd8a3f0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50557365651...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd89910>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50557509829...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd89040>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50588534430...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd89a00>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50586106605...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd8a060>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50577584929...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd8b3e0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50575377758...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd8bc20>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50587141216...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd8bbc0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50588945204...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd883b0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50586756988...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd8bce0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50588880000...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd8bfe0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50589082649...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd8ae70>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50583985627...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd8a000>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50583766524...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd88b90>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50583234048...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd07590>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50587604064...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd89730>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50589238182...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd8a8a0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50568859150...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd8b1a0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50582521849...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd889b0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50581320336...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557ddcb9b0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50558340059...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd079e0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50588648957...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd8b230>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50585255668...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd8baa0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50582040763...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd8b6e0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50586863781...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd8b140>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50577110636...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd077d0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50589641793...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd60fe0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50587920725...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd8b4d0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50584558128...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd8bbf0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50588804736...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd8bf50>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50588560786...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd881d0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50584135981...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd07500>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50587369059...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd60e30>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50584452307...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd8b1d0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50589183711...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd89af0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50557344717...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd89910>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50589361261...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd881a0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50578046275...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd60b30>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50581373022...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd63920>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50589422661...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd8adb0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50578437732...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd8b080>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50583769589...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd8bd10>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50578141421...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd8bbc0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50586266170...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd60710>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50586053531...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd63530>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50582817904...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd8b0e0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50587958748...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd8a150>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50588135411...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd89730>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50557697212...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd8a510>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50588431727...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd60770>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50586747948...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd62c30>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50581080892...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd8a450>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50575459877...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd8a390>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50577541576...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd8b470>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50578247092...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd88d10>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50581761272...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd63ce0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50578554564...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd61f40>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50588498081...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd8a7e0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50557158520...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd89940>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50583333139...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd8bd40>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50582727112...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd8ae10>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50589964691...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd60620>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50587969556...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cda01a0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50585292818...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd8a030>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50581818130...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd8a8a0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50583965588...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd8a480>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50588739906...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd8b020>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50588612376...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd077d0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50586307737...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cda1370>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50583858756...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd63ef0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50578202300...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd628a0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50585326233...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd62c30>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50581287289...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd63800>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50582088842...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd61040>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50586834672...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd604a0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50589829333...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd63e90>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50586333912...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd63290>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50577037159...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd62b70>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50588495576...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd61c40>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50589671387...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd635f0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50588075223...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd06420>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50583920905...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd63ef0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50576136449...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd62bd0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50581158075...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd62f30>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50588264935...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd63110>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50585668351...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd63d40>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50557074123...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd06ff0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50586148645...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd62870>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50531652602223...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd62300>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50588336095...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd62120>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50588193519...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd60d70>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50585448044...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd07650>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50589841105...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd06450>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50589403852...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd60ad0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50577419404...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd61be0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50577437642...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd63aa0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50587437145...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd63da0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50585164521...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd07650>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50585339412...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd8be60>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50588894035...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd62d80>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50583605486...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd62300>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50584666361...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd61fa0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50584771690...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd62d50>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50586349377...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557d7cf320>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50581259905...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd8b7a0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50589043268...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd638f0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50558241102...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd61d30>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50589379244...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd63440>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50582410396...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd61af0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50588188683...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd881a0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50589082701...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd8a510>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50513057633879...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd63110>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50581339488...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd63440>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50588192360...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd630b0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50576444505...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd63e30>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50589134949...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd8aa80>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50585949086...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd89b80>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50588434756...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd60ef0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50588620220...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd62c90>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[4/15] Sending message to  at 50583567263...
+Failed: HTTPConnectionPool(host='localhost', port=2785): Max retries exceeded with url: /api/sessions/3b09b399-6e93-4672-8da3-e845b1e7fbe2/messages/send-text (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x71557cd63f80>: Failed to establish a new connection: [Errno 111] Connection refused'))
+Traceback (most recent call last):
+  File "/home/dylan/projects/main/main.py", line 96, in <module>
+  File "/home/dylan/projects/main/main.py", line 80, in main
+FileNotFoundError: [Errno 2] No such file or directory: '/home/dylan/projects/postProcessing/results.csv'
