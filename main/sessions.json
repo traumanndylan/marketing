@@ -1,0 +1,12 @@
+{
+  "message_limit_per_session": 15,
+  "sessions": [
+    {
+      "name": "Marketing Nicaragua",
+      "country": "Nicaragua",
+      "country_code": "ni",
+      "session_id": "afdd9b14-c2e0-4036-b869-7c6fc190770b",
+      "active": true
+    }
+  ]
+}
