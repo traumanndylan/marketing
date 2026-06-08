@@ -73,7 +73,7 @@ def check_number_exists(session_id, phone):
 
 def main():
     config = load_sessions_config()
-    MESSAGE_LIMIT = config.get("message_limit_per_session", 1)
+    MESSAGE_LIMIT = config.get("message_limit_per_session", 15)
     
     sessions_to_use = []
     for session in config.get("sessions", []):

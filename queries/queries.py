@@ -8,11 +8,11 @@ SCRAPER_DIR = os.path.join(SCRIPT_DIR, "..", "scraper")
 
 def load_lines(filepath: str) -> list[str]:
     with open(filepath, encoding="utf-8") as f:
-        lines = [
-            line.strip()
-            for line in f
-            if line.strip() and not line.strip().startswith("#")
-        ]
+        lines = []
+        for line in f:
+            clean_line = line.split('#')[0].strip()
+            if clean_line:
+                lines.append(clean_line)
     return lines
 
 

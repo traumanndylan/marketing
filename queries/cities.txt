@@ -62,12 +62,108 @@ Colón, Panamá
 La Chorrera, Panamá
 Juan Díaz, Panamá
 
-#México
+#Norte
+Tijuana, México
+Mexicali, México
+Ensenada, México
+Rosarito, México
+La Paz, México
+Cabo San Lucas, México
+San José del Cabo, México
+Ciudad Juárez, México
+Chihuahua, México
+Delicias, México
+Cuauhtémoc, México
+Hidalgo del Parral, México
+Durango, México
+Culiacán Rosales, México
+Mazatlán, México
+Los Mochis, México
+Guasave, México
+Hermosillo, México
+Ciudad Obregón, México
+Heroica Nogales, México
+San Luis Río Colorado, México
+Navojoa, México
+Heroica Guaymas, México
+Reynosa, México
+Heroica Matamoros, México
+Nuevo Laredo, México
+Ciudad Victoria, México
+Monterrey, México
+Saltillo, México
+Torreón, México
+Monclova, México
+Piedras Negras, México
+Ciudad Acuña, México
+Tampico, México
 
-#Península de Yucatán
+#Occidente
+Aguascalientes, México
+Colima, México
+Manzanillo, México
+Villa de Álvarez, México
+León de los Aldama, México
+Irapuato, México
+Celaya, México
+Salamanca, México
+Guanajuato, México
+San Miguel de Allende, México
+Guadalajara, México
+Puerto Vallarta, México
+Ciudad Guzmán, México
+Tepatitlán de Morelos, México
+Morelia, México
+Uruapan, México
+Zamora de Hidalgo, México
+Lázaro Cárdenas, México
+Apatzingán de la Constitución, México
+Tepic, México
+Santiago de Querétaro, México
+San Juan del Río, México
+San Luis Potosí, México
+Ciudad Valles, México
 
-#Chiapas y Tabasco
+#Centro
+Ciudad de México, México
+Toluca de Lerdo, México
+Metepec, México
+Pachuca de Soto, México
+Tulancingo de Bravo, México
+Tizayuca, México
+Cuernavaca, México
+Jiutepec, México
+Heroica Cuautla, México
+Puebla de Zaragoza, México
+Tehuacán, México
+San Martín Texmelucan de Labastida, México
+Zacatecas, México
+Fresnillo, México
+Veracruz, México
+Xalapa-Enríquez, México
+Poza Rica de Hidalgo, México
+Córdoba, México
+Orizaba, México
 
-#Veracruz
-
-#Baja California y Sonora
+#Sur
+San Francisco de Campeche, México
+Ciudad del Carmen, México
+Tuxtla Gutiérrez, México
+Tapachula de Córdova y Ordóñez, México
+San Cristóbal de las Casas, México
+Comitán de Domínguez, México
+Acapulco de Juárez, México
+Chilpancingo de los Bravo, México
+Iguala de la Independencia, México
+Zihuatanejo, México
+Oaxaca de Juárez, México
+San Juan Bautista Tuxtepec, México
+Cancún, México
+Playa del Carmen, México
+Chetumal, México
+Villahermosa, México
+Heroica Cárdenas, México
+Comalcalco, México
+Coatzacoalcos, México
+Minatitlán, México
+Mérida, México

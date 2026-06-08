@@ -21,9 +21,17 @@ def main():
         except Exception as e:
             print(f"Warning: Failed to load blacklist.json: {e}")
             
-    country_prefixes = {'NI': '505', 'CR': '506'}
+    country_prefixes = {
+        'NI': '505',
+        'CR': '506',
+        'HN': '504',
+        'SV': '503',
+        'GT': '502',
+        'PA': '507',
+        'MX': '52'
+    }
 
-    fieldnames = ['Name', 'City', 'Country', 'Phone #', 'status']
+    fieldnames = ['Name', 'City', 'Country', 'Phone #', 'Status']
     existing_rows = []
     existing_phones = set()
 
@@ -71,7 +79,7 @@ def main():
                 if prefix and phone.startswith(prefix) and len(phone) > len(prefix):
                     phone = phone[len(prefix):]
                 
-                if phone.startswith('2') or len(phone) > 8:
+                if len(phone) < 7 or len(phone) > 10:
                     continue
                 
                 if prefix:
@@ -87,7 +95,7 @@ def main():
                     'City': city,
                     'Country': country,
                     'Phone #': phone,
-                    'status': ''
+                    'Status': ''
                 })
 
         print(f"New contacts: {len(new_rows)} | Duplicates skipped: {skipped_dup}")
