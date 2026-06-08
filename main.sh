@@ -1,2 +1,3 @@
 #!/bin/bash
-python3 ~/marketing/main/main.py >> ~/marketing/cron/cron.log 2>&1
+cd /home/dylan/marketing/main
+python3 main.py

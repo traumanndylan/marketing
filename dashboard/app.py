@@ -146,7 +146,8 @@ def session_webhook():
     return "", 200
 
 def retry_queued(session_id):
-    subprocess.Popen(["python3", os.path.join(MAIN_DIR, "main.py")])
+    log_file = open(CRON_LOG, "a")
+    subprocess.Popen(["python3", "-u", os.path.join(MAIN_DIR, "main.py")], stdout=log_file, stderr=subprocess.STDOUT)
 
 def mark_session_suspended(session_id):
     try:
@@ -162,7 +163,8 @@ def mark_session_suspended(session_id):
 def run_now():
     action = request.json.get("action")
     if action == "run":
-        subprocess.Popen(["python3", os.path.join(MAIN_DIR, "main.py")])
+        log_file = open(CRON_LOG, "a")
+        subprocess.Popen(["python3", "-u", os.path.join(MAIN_DIR, "main.py")], stdout=log_file, stderr=subprocess.STDOUT)
         return jsonify({"success": True})
     elif action == "pause":
         with open(PAUSED_FILE, "w") as f: f.write("")

@@ -1,7 +1,12 @@
 #!/usr/bin/env python3
 import csv, os, sys, time, random, requests, json
 
-API_URL = "http://localhost:2785/api"
+API_URL = "http://openwa:2785/api"
+try:
+    requests.get(f"{API_URL}/health", timeout=1)
+except requests.exceptions.ConnectionError:
+    API_URL = "http://localhost:2785/api"
+
 API_KEY = "dev-admin-key"
 
 def load_sessions_config():
@@ -53,16 +58,29 @@ def send_message(session_id, phone, text):
     except Exception as e:
         return False, str(e)
 
+def check_number_exists(session_id, phone):
+    try:
+        res = requests.get(
+            f"{API_URL}/sessions/{session_id}/contacts/check/{phone}",
+            headers={"X-API-Key": API_KEY},
+            timeout=5
+        )
+        if res.status_code == 200:
+            return res.json().get("exists", False)
+        return True
+    except Exception:
+        return True
+
 def main():
     config = load_sessions_config()
-    MESSAGE_LIMIT = config.get("message_limit_per_session", 15)
+    MESSAGE_LIMIT = config.get("message_limit_per_session", 1)
     
     sessions_to_use = []
     for session in config.get("sessions", []):
         if not session.get("active", False):
             continue
         status = get_session_status(session["session_id"])
-        if status in ("BANNED", "SUSPENDED"):
+        if status.upper() in ("BANNED", "SUSPENDED"):
             print(f"Alert: Session for {session['country']} is {status}. Marking as inactive.")
             session["active"] = False
             continue
@@ -71,7 +89,7 @@ def main():
         
     save_sessions_config(config)
 
-    csv_file = os.path.expanduser('~/marketing/postProcessing/results.csv')
+    csv_file = '/home/dylan/marketing/postProcessing/results.csv'
     if not os.path.exists(csv_file):
         sys.exit(f"Error: {csv_file} not found")
         
@@ -123,7 +141,7 @@ def main():
             if messages_sent_for_session >= limit:
                 break
                 
-            if current_status != "READY":
+            if current_status.upper() != "READY":
                 if row.get('Status') != 'Queued':
                     row['Status'] = 'Queued'
                     with open(csv_file, 'w', encoding='utf-8', newline='') as f:
@@ -134,6 +152,17 @@ def main():
                 continue
                 
             print(f"[{messages_sent_for_session + 1}/{limit}] Sending message to {name} at {phone} in {country}...")
+            
+            if not check_number_exists(session_id, phone):
+                print(f"Failed: Number does not exist on WhatsApp.")
+                row['Status'] = 'Skipped'
+                with open(csv_file, 'w', encoding='utf-8', newline='') as f:
+                    writer = csv.DictWriter(f, fieldnames=fieldnames)
+                    writer.writeheader()
+                    writer.writerows(rows)
+                time.sleep(1)
+                continue
+            
             success, reason = send_message(session_id, phone, message_text)
             
             if not success and "banned" in reason.lower():

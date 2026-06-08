@@ -95,7 +95,6 @@
             gap: .5rem;
         }
 
-        /* Stats */
         .stat-row {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -120,7 +119,6 @@
             margin-top: .2rem;
         }
 
-        /* Badges */
         .badge {
             display: inline-block;
             padding: .2rem .65rem;
@@ -145,7 +143,6 @@
             color: var(--red);
         }
 
-        /* Buttons */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -188,7 +185,6 @@
             color: var(--red);
         }
 
-        /* Controls */
         .controls-row {
             display: flex;
             gap: .75rem;
@@ -196,18 +192,24 @@
             flex-wrap: wrap;
         }
 
-        /* Session list */
         .session-item {
-            display: grid;
-            grid-template-columns: 1fr auto;
-            align-items: center;
-            gap: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: .3rem;
             padding: 1.1rem 0;
             border-bottom: 1px solid var(--border);
         }
 
         .session-item:last-child {
             border-bottom: none;
+        }
+
+        .session-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            width: 100%;
         }
 
         .session-name {
@@ -218,7 +220,7 @@
         .session-meta {
             font-size: .75rem;
             color: var(--muted);
-            margin-top: .3rem;
+            margin-top: .1rem;
             font-family: monospace;
             word-break: break-all;
         }
@@ -230,7 +232,6 @@
             flex-shrink: 0;
         }
 
-        /* Add session form */
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -298,7 +299,6 @@
             font-weight: bold;
         }
 
-        /* Modal */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -362,7 +362,6 @@
             gap: .75rem;
         }
 
-        /* Theme toggle */
         .theme-btn {
             background: none;
             border: 1px solid var(--border);
@@ -387,7 +386,6 @@
             <h1><i class="fa-solid fa-bullhorn"></i> Marketing Dashboard</h1>
         </header>
 
-        <!-- Stats + Controls -->
         <div class="grid-2">
             <div class="card">
                 <div class="card-title"><i class="fa-solid fa-chart-pie"></i> Overview</div>
@@ -406,7 +404,7 @@
                     </div>
                     <div class="stat">
                         <div class="stat-val">—</div>
-                        <div class="stat-label">Suspended</div>
+                        <div class="stat-label">Skipped</div>
                     </div>
                 </div>
             </div>
@@ -422,7 +420,6 @@
             </div>
         </div>
 
-        <!-- Sessions + Messages -->
         <div class="grid-2">
             <div class="card">
                 <div class="card-title"><i class="fa-solid fa-mobile-screen"></i> WhatsApp Sessions</div>
@@ -471,18 +468,17 @@
             </div>
         </div>
 
-        <!-- Logs -->
         <div class="card">
             <div class="card-title"><i class="fa-solid fa-terminal"></i> Logs</div>
             <div class="logs-box" id="logsContainer">Loading…</div>
         </div>
     </div>
 
-    <!-- Edit Session Modal -->
     <div class="modal-overlay" id="editModal">
         <div class="modal">
             <div class="modal-title"><i class="fa-solid fa-pen-to-square"></i> Edit Session</div>
             <input type="hidden" id="editOldSessionId">
+            <input type="hidden" id="editActive">
             <div class="modal-form-grid">
                 <div class="form-group form-full">
                     <label>Custom Name <span style="color:var(--muted);font-weight:400;">(leave blank to use country
@@ -501,13 +497,6 @@
                     <label>Session ID</label>
                     <input type="text" id="editSessionId" placeholder="session-ni">
                 </div>
-                <div class="form-group form-full">
-                    <label>Status</label>
-                    <select id="editActive">
-                        <option value="true">Active</option>
-                        <option value="false">Suspended</option>
-                    </select>
-                </div>
             </div>
             <div class="modal-footer">
                 <button class="btn" onclick="closeEditModal()">Cancel</button>
@@ -517,7 +506,6 @@
     </div>
 
     <script>
-        // ── Theme ─────────────────────────────────────────────
         function toggleTheme() {
             const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
             const next = isDark ? 'light' : 'dark';
@@ -540,7 +528,6 @@
             if (saved === 'light') applyTheme('light');
         })();
 
-        // ── Overview ──────────────────────────────────────────
         async function fetchOverview() {
             try {
                 const d = await fetch('/api/overview').then(r => r.json());
@@ -548,11 +535,10 @@
             <div class="stat"><div class="stat-val" style="color:var(--green)">${d.sent}</div><div class="stat-label">Sent</div></div>
             <div class="stat"><div class="stat-val" style="color:var(--yellow)">${d.queued}</div><div class="stat-label">Queued</div></div>
             <div class="stat"><div class="stat-val" style="color:var(--red)">${d.failed}</div><div class="stat-label">Failed</div></div>
-            <div class="stat"><div class="stat-val">${d.suspended_sessions}</div><div class="stat-label">Suspended</div></div>`;
+            <div class="stat"><div class="stat-val" style="color:var(--muted)">${d.skipped}</div><div class="stat-label">Skipped</div></div>`;
             } catch (e) { }
         }
 
-        // ── Status ────────────────────────────────────────────
         async function fetchStatus() {
             try {
                 const d = await fetch('/api/status').then(r => r.json());
@@ -568,7 +554,6 @@
             } catch (e) { }
         }
 
-        // ── Sessions ──────────────────────────────────────────
         async function fetchSessions() {
             try {
                 const d = await fetch('/api/sessions').then(r => r.json());
@@ -585,26 +570,26 @@
 
                 d.sessions.forEach(s => {
                     const status = s.status || 'UNKNOWN';
-                    // READY maps to "Active", everything else is title-cased
-                    const statusLabel = status === 'READY' ? 'Active'
+                    const statusUpper = status.toUpperCase();
+                    const statusLabel = statusUpper === 'READY' ? 'Active'
                         : status.charAt(0).toUpperCase() + status.slice(1).toLowerCase();
                     let bclass = 'badge-yellow';
-                    if (status === 'READY') bclass = 'badge-green';
-                    if (['SUSPENDED', 'BANNED', 'OFFLINE', 'DISCONNECTED'].includes(status)) bclass = 'badge-red';
+                    if (statusLabel === 'Active') bclass = 'badge-green';
+                    if (['SUSPENDED', 'BANNED', 'OFFLINE', 'DISCONNECTED'].includes(statusUpper)) bclass = 'badge-red';
 
                     const displayName = s.name || s.country;
 
                     list.innerHTML += `
             <div class="session-item">
-                <div style="min-width:0;overflow:hidden;">
+                <div class="session-header">
                     <div class="session-name">${displayName} <span style="color:var(--muted);font-weight:400;">(${s.country_code})</span></div>
-                    <div class="session-meta">${s.session_id}</div>
+                    <div class="session-actions">
+                        <span class="badge ${bclass}">${statusLabel}</span>
+                        <button class="btn btn-icon" onclick="openEditModal('${s.session_id}','${(s.name || '').replace(/'/g, "\\'")}','${s.country.replace(/'/g, "\\'")}','${s.country_code}',${s.active})" title="Edit"><i class="fa-solid fa-pen"></i></button>
+                        <button class="btn btn-icon btn-danger" onclick="deleteSession('${s.session_id}')" title="Delete"><i class="fa-solid fa-trash"></i></button>
+                    </div>
                 </div>
-                <div class="session-actions">
-                    <span class="badge ${bclass}">${statusLabel}</span>
-                    <button class="btn btn-icon" onclick="openEditModal('${s.session_id}','${(s.name || '').replace(/'/g, "\\'")}','${s.country.replace(/'/g, "\\'")}','${s.country_code}',${s.active})" title="Edit"><i class="fa-solid fa-pen"></i></button>
-                    <button class="btn btn-icon btn-danger" onclick="deleteSession('${s.session_id}')" title="Delete"><i class="fa-solid fa-trash"></i></button>
-                </div>
+                <div class="session-meta">${s.session_id}</div>
             </div>`;
 
                     select.innerHTML += `<option value="${s.country_code}">${displayName}</option>`;
@@ -639,7 +624,6 @@
             fetchSessions();
         }
 
-        // ── Edit Modal ────────────────────────────────────────
         function openEditModal(sessionId, name, country, countryCode, active) {
             document.getElementById('editOldSessionId').value = sessionId;
             document.getElementById('editName').value = name;
@@ -670,12 +654,10 @@
             fetchSessions();
         }
 
-        // Close modal on overlay click
         document.getElementById('editModal').addEventListener('click', function (e) {
             if (e.target === this) closeEditModal();
         });
 
-        // ── Messages ──────────────────────────────────────────
         async function loadMessage() {
             const cc = document.getElementById('messageCountrySelect').value;
             const d = await fetch(`/api/messages/${cc}`).then(r => r.json());
@@ -692,7 +674,6 @@
             alert('Message saved.');
         }
 
-        // ── Controls ──────────────────────────────────────────
         async function triggerRun() {
             await fetch('/api/run', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'run' }) });
             alert('Run triggered.');
@@ -704,7 +685,6 @@
             fetchStatus();
         }
 
-        // ── Logs ──────────────────────────────────────────────
         async function fetchLogs() {
             try {
                 const d = await fetch('/api/logs').then(r => r.json());
@@ -722,7 +702,6 @@
             } catch (e) { }
         }
 
-        // ── Init ──────────────────────────────────────────────
         fetchOverview(); fetchSessions(); fetchStatus(); loadMessage(); fetchLogs();
         setInterval(fetchOverview, 5000);
         setInterval(fetchStatus, 5000);
