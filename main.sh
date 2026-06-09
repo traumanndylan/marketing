@@ -1,3 +1,4 @@
 #!/bin/bash
-cd /home/dylan/marketing/main
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$SCRIPT_DIR/main"
 python3 main.py
