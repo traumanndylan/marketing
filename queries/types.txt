@@ -1,33 +1,22 @@
-#Clínicas y Cuidado
+#Clínicas
 Clínicas Veterinarias
-Clínicas Odontológicas
+Clínicas Ópticas
 Clínicas Médicas
 Clínicas Dentales
-Clínicas de Estética
-Salones de Belleza
-Psicólogos Clínicos
+Clinicás Psicológicas
 
 #Academias
 Escuela de Arte
 Escuela de Música
-Academia de Artes Marciales
 Academia de Inglés
+Academia de Idiomas
 
-#Profesionales
-Fotógrafos Profesionales
-Diseño Gráfico
-
-#Agencias
-Agencias de Organización de Eventos
+#Agencias    
 Agencias Inmobiliarias
 Agencias de Turismo
 Agencias de Viajes
 
 #Tecnología
-Venta de Electrodomésticos
 Venta de Electrónicos
 Venta de Celulares
 Venta de Computadoras
-
-#Otros
-Gimnasios

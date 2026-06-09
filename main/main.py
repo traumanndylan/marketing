@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import csv, os, sys, time, random, requests, json
+import csv, os, sys, time, random, requests, json, argparse
 
 API_URL = "http://openwa:2785/api"
 try:
@@ -22,16 +22,25 @@ def save_sessions_config(config):
     with open(config_path, 'w', encoding='utf-8') as f:
         json.dump(config, f, indent=2)
 
-def get_message(country_code):
-    dir_path = os.path.dirname(__file__)
-    path = os.path.join(dir_path, f"message.{country_code}.txt")
-    fallback = os.path.join(dir_path, "message.default.txt")
-    target = path if os.path.exists(path) else fallback
-    try:
-        with open(target, encoding="utf-8") as f:
-            return f.read()
-    except Exception as e:
-        return f"Error reading message: {e}"
+def get_message(country_code, category="default"):
+    dir_path = os.path.join(os.path.dirname(__file__), "messages")
+    
+    paths_to_check = [
+        os.path.join(dir_path, country_code, f"message.{category}.txt"),
+        os.path.join(dir_path, "default", f"message.{category}.txt"),
+        os.path.join(dir_path, country_code, "message.default.txt"),
+        os.path.join(dir_path, "default", "message.default.txt")
+    ]
+    
+    for path in paths_to_check:
+        if os.path.exists(path):
+            try:
+                with open(path, encoding="utf-8") as f:
+                    return f.read()
+            except Exception as e:
+                return f"Error reading message from {path}: {e}"
+                
+    return "Error: No message template found."
 
 def get_session_status(session_id):
     try:
@@ -58,26 +67,23 @@ def send_message(session_id, phone, text):
     except Exception as e:
         return False, str(e)
 
-def check_number_exists(session_id, phone):
-    try:
-        res = requests.get(
-            f"{API_URL}/sessions/{session_id}/contacts/check/{phone}",
-            headers={"X-API-Key": API_KEY},
-            timeout=5
-        )
-        if res.status_code == 200:
-            return res.json().get("exists", False)
-        return True
-    except Exception:
-        return True
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--country', type=str, default=None,
+                        help='Country code to process (e.g. ni, mx, ec). If omitted, processes all.')
+    args = parser.parse_args()
+    target_country = args.country.upper() if args.country else None
+
     config = load_sessions_config()
     MESSAGE_LIMIT = config.get("message_limit_per_session", 15)
     
     sessions_to_use = []
     for session in config.get("sessions", []):
         if not session.get("active", False):
+            continue
+        # Filter by country code if specified
+        if target_country and session.get("country_code", "").upper() != target_country:
             continue
         status = get_session_status(session["session_id"])
         if status.upper() in ("BANNED", "SUSPENDED"):
@@ -89,18 +95,37 @@ def main():
         
     save_sessions_config(config)
 
-    csv_file = '/home/dylan/marketing/postProcessing/results.csv'
-    if not os.path.exists(csv_file):
-        sys.exit(f"Error: {csv_file} not found")
-        
-    with open(csv_file, 'r', encoding='utf-8') as f:
-        reader = csv.DictReader(f)
-        fieldnames = reader.fieldnames
-        rows = list(reader)
+    if not sessions_to_use:
+        country_label = target_country if target_country else "any country"
+        print(f"No active sessions found for {country_label}.")
+        return
 
-    if 'Status' not in fieldnames:
-        sys.exit("Error: No 'Status' column.")
+    db_file = '/home/dylan/marketing/main/leads.db'
+    if not os.path.exists(db_file):
+        sys.exit(f"Error: {db_file} not found. Run scraper first.")
         
+    import sqlite3
+    conn = sqlite3.connect(db_file)
+    conn.row_factory = sqlite3.Row
+    c = conn.cursor()
+
+    # --- STAGE 1: ALLOCATION ---
+    for session in sessions_to_use:
+        country = session["country"]
+        session_id = session["session_id"]
+        
+        c.execute("SELECT COUNT(*) as cnt FROM leads WHERE status = 'Queued' AND assigned_session = ?", (session_id,))
+        currently_queued = c.fetchone()['cnt']
+        needed = max(0, MESSAGE_LIMIT - currently_queued)
+        
+        if needed > 0:
+            c.execute("SELECT phone FROM leads WHERE country = ? AND status = '' LIMIT ?", (country, needed))
+            eligible = c.fetchall()
+            for r in eligible:
+                c.execute("UPDATE leads SET status = 'Queued', assigned_session = ? WHERE phone = ?", (session_id, r['phone']))
+            conn.commit()
+
+    # --- STAGE 2: EXECUTION ---
     total_messages_sent = 0
     for session in sessions_to_use:
         country = session["country"]
@@ -108,87 +133,57 @@ def main():
         country_code = session["country_code"]
         current_status = session.get("current_status")
         
-        country_rows = [r for r in rows if r.get('Country', '').strip() == country]
-        eligible_rows = [r for r in country_rows if r.get('Status', '').strip() in ('', 'Queued') and r.get('Phone #', '').strip()]
+        c.execute("SELECT * FROM leads WHERE status = 'Queued' AND assigned_session = ?", (session_id,))
+        my_queue = c.fetchall()
         
-        if not eligible_rows:
+        if not my_queue:
             continue
             
-        print(f"\nProcessing {country} (Session: {current_status})")
+        print(f"\nProcessing {country} (Session: {session_id} - {current_status})")
         
-        limit = min(MESSAGE_LIMIT, len(eligible_rows))
+        if current_status.upper() != "READY":
+            print(f"Session not READY. {len(my_queue)} messages remain in queue.")
+            continue
+            
+        limit = min(MESSAGE_LIMIT, len(my_queue))
         messages_sent_for_session = 0
         
-        message_text = get_message(country_code)
-        
-        for row in rows:
-            if row.get('Country', '').strip() != country:
-                continue
-            if row.get('Status', '').strip() not in ('', 'Queued'):
-                continue
-                
-            phone = row.get('Phone #', '').strip()
-            name = row.get('Name', '').strip()
+        for row in my_queue:
+            phone = row['phone']
+            name = row['name']
             
             if not phone:
-                row['Status'] = 'Skipped'
-                with open(csv_file, 'w', encoding='utf-8', newline='') as f:
-                    writer = csv.DictWriter(f, fieldnames=fieldnames)
-                    writer.writeheader()
-                    writer.writerows(rows)
+                c.execute("UPDATE leads SET status = 'Skipped' WHERE phone = ?", (phone,))
+                conn.commit()
                 continue
                 
+            categories = ['default', 'clinica', 'academia', 'agencia', 'tecnologia']
+            message_category = random.choice(categories)
+            message_text = get_message(country_code, category=message_category)
+            
             if messages_sent_for_session >= limit:
                 break
                 
-            if current_status.upper() != "READY":
-                if row.get('Status') != 'Queued':
-                    row['Status'] = 'Queued'
-                    with open(csv_file, 'w', encoding='utf-8', newline='') as f:
-                        writer = csv.DictWriter(f, fieldnames=fieldnames)
-                        writer.writeheader()
-                        writer.writerows(rows)
-                print(f"Session not READY. Queued message to {name} at {phone}.")
-                continue
-                
             print(f"[{messages_sent_for_session + 1}/{limit}] Sending message to {name} at {phone} in {country}...")
-            
-            if not check_number_exists(session_id, phone):
-                print(f"Failed: Number does not exist on WhatsApp.")
-                row['Status'] = 'Skipped'
-                with open(csv_file, 'w', encoding='utf-8', newline='') as f:
-                    writer = csv.DictWriter(f, fieldnames=fieldnames)
-                    writer.writeheader()
-                    writer.writerows(rows)
-                time.sleep(1)
-                continue
             
             success, reason = send_message(session_id, phone, message_text)
             
             if not success and "banned" in reason.lower():
                 print(f"CRITICAL: Session {session_id} banned while sending! Suspending {country}.")
-                row['Status'] = 'Queued'
                 for s in config["sessions"]:
                     if s["session_id"] == session_id:
                         s["active"] = False
                 save_sessions_config(config)
-                with open(csv_file, 'w', encoding='utf-8', newline='') as f:
-                    writer = csv.DictWriter(f, fieldnames=fieldnames)
-                    writer.writeheader()
-                    writer.writerows(rows)
                 break
                 
-            row['Status'] = 'Sent' if success else 'Failed'
+            new_status = 'Sent' if success else 'Failed'
+            c.execute("UPDATE leads SET status = ? WHERE phone = ?", (new_status, phone))
+            conn.commit()
             print("Done" if success else f"Failed: {reason}")
             
             if success:
                 messages_sent_for_session += 1
                 total_messages_sent += 1
-                
-            with open(csv_file, 'w', encoding='utf-8', newline='') as f:
-                writer = csv.DictWriter(f, fieldnames=fieldnames)
-                writer.writeheader()
-                writer.writerows(rows)
                 
             if messages_sent_for_session >= limit:
                 break
@@ -198,6 +193,7 @@ def main():
             else:
                 time.sleep(2)
 
+    conn.close()
     print(f"\nFinished run. Sent {total_messages_sent} total messages.")
 
 if __name__ == '__main__':

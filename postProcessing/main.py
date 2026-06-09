@@ -3,6 +3,7 @@ import csv
 import json
 import os
 import sys
+import sqlite3
 
 def main():
     input_file = os.path.expanduser('~/marketing/scraper/gmaps-output/results.csv')
@@ -31,7 +32,7 @@ def main():
         'MX': '52'
     }
 
-    fieldnames = ['Name', 'City', 'Country', 'Phone #', 'Status']
+    fieldnames = ['Name', 'City', 'Country', 'Phone #', 'Status', 'Assigned Session']
     existing_rows = []
     existing_phones = set()
 
@@ -95,7 +96,8 @@ def main():
                     'City': city,
                     'Country': country,
                     'Phone #': phone,
-                    'Status': ''
+                    'Status': '',
+                    'Assigned Session': ''
                 })
 
         print(f"New contacts: {len(new_rows)} | Duplicates skipped: {skipped_dup}")
@@ -107,6 +109,34 @@ def main():
             writer.writerows(new_rows)
             
         print(f"Done. Total contacts: {len(existing_rows) + len(new_rows)}")
+        
+        db_path = os.path.expanduser('~/marketing/main/leads.db')
+        conn = sqlite3.connect(db_path)
+        c = conn.cursor()
+        c.execute('''
+            CREATE TABLE IF NOT EXISTS leads (
+                phone TEXT PRIMARY KEY,
+                name TEXT,
+                city TEXT,
+                country TEXT,
+                status TEXT DEFAULT '',
+                assigned_session TEXT DEFAULT ''
+            )
+        ''')
+        
+        all_rows = existing_rows + new_rows
+        sync_count = 0
+        for r in all_rows:
+            c.execute('''
+                INSERT OR IGNORE INTO leads (phone, name, city, country, status, assigned_session)
+                VALUES (?, ?, ?, ?, ?, ?)
+            ''', (r['Phone #'], r['Name'], r['City'], r['Country'], r.get('Status', ''), r.get('Assigned Session', '')))
+            if c.rowcount > 0:
+                sync_count += 1
+                
+        conn.commit()
+        conn.close()
+        print(f"Synced {sync_count} new leads to database.")
         
     except Exception as e:
         print(f"Error: {e}")

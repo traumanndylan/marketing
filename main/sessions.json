@@ -1,13 +1,4 @@
 {
-  "message_limit_per_session": 3,
-  "sessions": [
-    {
-      "name": "test",
-      "country": "Nicaragua",
-      "country_code": "ni",
-      "session_id": "e7ea61bb-7969-4b84-961f-0ac988f70937",
-      "active": true,
-      "current_status": "ready"
-    }
-  ]
+  "message_limit_per_session": 5,
+  "sessions": []
 }
