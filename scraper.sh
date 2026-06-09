@@ -10,7 +10,7 @@ echo "Generating Queries"
 python3 "$PROJECTS/queries/queries.py"
 
 echo ""
-echo "Running Scraper"
+echo "Running Scraper (FAST MODE - NICARAGUA COORDS)"
 cd "$SCRAPER_DIR"
 
 BACKUP_FILE=""
@@ -38,6 +38,10 @@ podman run \
   -input /queries.txt \
   -results /out/results.csv \
   -depth 1 \
+  -fast-mode \
+  -geo 12.11,-86.25 \
+  -radius 250000 \
+  -c 4 \
   -exit-on-inactivity 3m &
 
 CONTAINER_PID=$!
