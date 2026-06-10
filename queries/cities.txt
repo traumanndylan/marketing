@@ -1,10 +1,184 @@
 #Nicaragua
 Managua, Nicaragua
-Granada, Nicaragua
 León, Nicaragua
 Masaya, Nicaragua
-Chinandega, Nicaragua
-Estelí, Nicaragua
 Matagalpa, Nicaragua
-Ciudad Sandino, Nicaragua
 Tipitapa, Nicaragua
+Chinandega, Nicaragua
+Granada, Nicaragua
+Estelí, Nicaragua
+Ciudad Sandino, Nicaragua
+
+#Mexico
+
+#Norte
+Tijuana, Mexico
+Ciudad Juárez, Mexico
+Monterrey, Mexico
+Chihuahua, Mexico
+Saltillo, Mexico
+Hermosillo, Mexico
+Mexicali, Mexico
+Reynosa, Mexico
+Torreón, Mexico
+Guadalupe, Mexico
+Apodaca, Mexico
+Matamoros, Mexico
+Nuevo Laredo, Mexico
+Ciudad Obregón, Mexico
+Gómez Palacio, Mexico
+Los Mochis, Mexico
+Monclova, Mexico
+Nogales, Mexico
+Piedras Negras, Mexico
+Guaymas, Mexico
+Delicias, Mexico
+San Luis Río Colorado, Mexico
+Tampico, Mexico
+Ciudad Madero, Mexico
+Ensenada, Mexico
+La Paz, Mexico
+
+#Occidente
+Zapopan, Mexico
+Guadalajara, Mexico
+León, Mexico
+Aguascalientes, Mexico
+Culiacán, Mexico
+Morelia, Mexico
+Tlaquepaque, Mexico
+Irapuato, Mexico
+Mazatlán, Mexico
+Tonalá, Mexico
+Celaya, Mexico
+Tepic, Mexico
+Uruapan, Mexico
+Manzanillo, Mexico
+Puerto Vallarta, Mexico
+Salamanca, Mexico
+Zamora, Mexico
+    
+#Centro
+Ciudad de Mexico, Mexico
+Puebla, Mexico
+San Luis Potosí, Mexico
+Querétaro, Mexico
+Toluca, Mexico
+Cuautitlán Izcalli, Mexico
+Pachuca, Mexico
+Tehuacán, Mexico
+San Juan del Río, Mexico
+Chalco, Mexico
+Jiutepec, Mexico
+Cuautla, Mexico
+Ecatepec, Mexico
+Nezahualcóyotl, Mexico
+Naucalpan, Mexico
+Chimalhuacán, Mexico
+Tlalnepantla, Mexico
+Zacatecas, Mexico
+
+#Sur
+Mérida, Mexico
+Cancún, Mexico
+Acapulco, Mexico
+Tuxtla, Mexico
+Xalapa, Mexico
+Villahermosa, Mexico
+Oaxaca, Mexico
+San Francisco de Campeche, Mexico
+Chetumal, Mexico
+Tapachula, Mexico
+Coatzacoalcos, Mexico
+Chilpancingo, Mexico
+Ciudad del Carmen, Mexico
+San Cristóbal de las Casas, Mexico
+Poza Rica, Mexico
+Orizaba, Mexico
+
+#Guatemala
+Guatemala City, Guatemala
+Mixco, Guatemala
+Villa Nueva, Guatemala
+San Juan Sacatepéquez, Guatemala
+San Pedro Carchá, Guatemala
+Cobán, Guatemala
+Quetzaltenango, Guatemala
+Jalapa, Guatemala
+Escuintla, Guatemala
+Jutiapa, Guatemala
+Villa Canales, Guatemala
+Chichicastenango, Guatemala
+Amatitlán, Guatemala
+San Miguel Petapa, Guatemala
+Momostenango, Guatemala
+Huehuetenango, Guatemala
+Santa Lucía Cotzumalguapa, Guatemala
+Puerto Barrios, Guatemala
+Retalhuleu, Guatemala
+
+#Honduras
+Tegucigalpa, Honduras
+San Pedro Sula, Honduras
+Choloma, Honduras
+Danlí, Honduras
+La Ceiba, Honduras
+El Progreso, Honduras
+Villanueva, Honduras
+Comayagua, Honduras
+Choluteca, Honduras
+Juticalpa, Honduras
+Puerto Cortés, Honduras
+Catacamas, Honduras
+Olanchito, Honduras
+Siguatepeque, Honduras
+Tocoa, Honduras
+Tela, Honduras
+
+#El Salvador
+San Salvador, El Salvador
+Soyapango, El Salvador
+Santa Ana, El Salvador
+San Miguel, El Salvador
+Apopa, El Salvador
+Santa Tecla, El Salvador
+Delgado, El Salvador
+Mejicanos, El Salvador
+Ilopango, El Salvador
+
+#Costa Rica
+San José, Costa Rica
+Alajuela, Costa Rica
+Cartago, Costa Rica
+Heredia, Costa Rica
+Puntarenas, Costa Rica
+Limón, Costa Rica
+
+#Panama
+Panama City, Panama
+San Miguelito, Panama
+Arraiján, Panama
+Colón, Panama
+La Chorrera, Panama
+David, Panama
+
+#Ecuador
+Guayaquil, Ecuador
+Quito, Ecuador
+Cuenca, Ecuador
+Santo Domingo, Ecuador
+Durán, Ecuador
+Machala, Ecuador
+Manta, Ecuador
+Portoviejo, Ecuador
+Loja, Ecuador
+Quevedo, Ecuador
+Ambato, Ecuador
+Riobamba, Ecuador
+Daule, Ecuador
+Milagro, Ecuador
+Ibarra, Ecuador
+Esmeraldas, Ecuador
+La Libertad, Ecuador
+Babahoyo, Ecuador
+Sangolquí, Ecuador

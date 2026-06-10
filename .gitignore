@@ -1,3 +1,2 @@
-scraper/gmaps-output/results.csv
-postProcessing/results.csv
-main/leads.db
+*.csv
+*.db
