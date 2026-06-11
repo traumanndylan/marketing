@@ -71,7 +71,7 @@ def send_message(session_id, phone, text):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--country', type=str, default=None,
-                        help='Country code to process (e.g. ni, mx, ec). If omitted, processes all.')
+                        help='Country code to process (e.g. ni, mx, ec)')
     args = parser.parse_args()
     target_country = args.country.upper() if args.country else None
 
@@ -82,7 +82,6 @@ def main():
     for session in config.get("sessions", []):
         if not session.get("active", False):
             continue
-        # Filter by country code if specified
         if target_country and session.get("country_code", "").upper() != target_country:
             continue
         status = get_session_status(session["session_id"])
@@ -109,7 +108,6 @@ def main():
     conn.row_factory = sqlite3.Row
     c = conn.cursor()
 
-    # --- STAGE 1: ALLOCATION ---
     for session in sessions_to_use:
         country = session["country"]
         session_id = session["session_id"]
@@ -125,7 +123,6 @@ def main():
                 c.execute("UPDATE leads SET status = 'Queued', assigned_session = ? WHERE phone = ?", (session_id, r['phone']))
             conn.commit()
 
-    # --- STAGE 2: EXECUTION ---
     total_messages_sent = 0
     for session in sessions_to_use:
         country = session["country"]

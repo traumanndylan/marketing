@@ -24,12 +24,12 @@ def main():
     
     os.makedirs(output_dir, exist_ok=True)
 
-    print("Generating Queries...")
+    print("Generating Queries")
     queries_script = os.path.join(projects_dir, 'queries', 'queries.py')
     subprocess.run([sys.executable, queries_script], check=True)
 
     if not os.path.exists(queries_csv):
-        print(f"[ERROR] The file {queries_csv} was not generated. Aborting.")
+        print(f"queries.csv was not generated. Aborting.")
         sys.exit(1)
 
     grouped_cities = {}
@@ -64,7 +64,7 @@ def main():
 
     subprocess.run(["podman", "rm", "-f", container_name], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
-    print("\nRunning Scraper...")
+    print("\nRunning Scraper")
     interrupted = False
     
     pbar = tqdm(grouped_cities.items(), total=total_cities, desc="Scraping", unit="city", colour="green")
@@ -106,14 +106,14 @@ def main():
                         write_header = not os.path.exists(results_file)
                         with open(results_file, 'a', encoding='utf-8') as rf:
                             if write_header:
-                                rf.write(lines[0])  # Write header
-                            rf.writelines(lines[1:]) # Write data
+                                rf.write(lines[0])
+                            rf.writelines(lines[1:])
                             
             subprocess.run(["podman", "rm", "-f", container_name], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
     except KeyboardInterrupt:
         interrupted = True
-        tqdm.write("\n\nCaught interrupt — stopping scraper gracefully...")
+        tqdm.write("\n\n Programm Interrupted")
         subprocess.run(["podman", "stop", "-t", "10", container_name], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         subprocess.run(["podman", "rm", "-f", container_name], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     finally:
@@ -132,7 +132,7 @@ def main():
         post_script = os.path.join(projects_dir, 'postProcessing', 'main.py')
         subprocess.run([sys.executable, post_script])
     else:
-        print("\nScraper finished with interruptions. Skipping Post-Processing.")
+        print("\nPost Processing Skipped")
 
     elapsed_seconds = int(time.time() - start_time)
     minutes = elapsed_seconds // 60

@@ -110,11 +110,11 @@ def main():
     types = load_lines(args.types)
 
     if not cities or not types:
-        print("[ERROR] Missing cities or types data.")
+        print("Missing cities or types data")
         return
 
     if not os.path.exists(DB_PATH):
-        print(f"Database not found at {DB_PATH}.")
+        print(f"Database not found at {DB_PATH}")
         return
 
     country_mapping = load_country_mapping()

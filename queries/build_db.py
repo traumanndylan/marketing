@@ -25,7 +25,7 @@ def build_database():
         )
     ''')
 
-    print(f"Reading {ZIP_FILE} and filtering for cities... (This may take a minute or two)")
+    print(f"Reading {ZIP_FILE} and filtering for cities")
     
     insert_query = '''
         INSERT INTO cities (name, country_code, latitude, longitude, population)

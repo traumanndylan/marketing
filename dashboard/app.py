@@ -238,7 +238,6 @@ def session_webhook():
     new_status = data.get("status")
     
     if new_status == "READY":
-        # Find the country_code for this session and trigger a run
         try:
             config = read_json(SESSIONS_FILE)
             for s in config.get("sessions", []):

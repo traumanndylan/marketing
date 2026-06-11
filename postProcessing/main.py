@@ -80,7 +80,6 @@ def main():
         except Exception as e:
             print(f"Warning: Failed to load blacklist.json: {e}")
 
-    print("Building country metadata maps dynamically...")
     country_prefixes, country_display_map = load_dynamic_country_data(country_info_path)
     print(f"Loaded metadata rules for {len(country_display_map)} countries.")
 
@@ -119,7 +118,6 @@ def main():
             new_rows = []
             skipped_dup = 0
             
-            # THE TQDM MAGIC: Wraps the loop in a beautiful loading bar
             for row in tqdm(reader, total=total_rows, desc="Processing Leads", unit="lead", colour="green"):
 
                 if row.get('website', '').strip():

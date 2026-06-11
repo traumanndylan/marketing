@@ -1,2 +1,5 @@
 *.csv
 *.db
+*.tmp
+*.bak
+*.log

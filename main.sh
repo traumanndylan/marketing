@@ -1,4 +1,5 @@
 #!/bin/bash
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-cd "$SCRIPT_DIR/main"
-python3 main.py
+export PYTHONPATH="$SCRIPT_DIR:$PYTHONPATH"
+cd "$SCRIPT_DIR"
+python3 main/main.py
