@@ -99,7 +99,7 @@ def main():
         print(f"No active sessions found for {country_label}.")
         return
 
-    db_file = '/home/dylan/marketing/main/leads.db'
+    db_file = '/home/dylan/marketing/programs/db/leads.db'
     if not os.path.exists(db_file):
         sys.exit(f"Error: {db_file} not found. Run scraper first.")
         

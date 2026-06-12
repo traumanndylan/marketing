@@ -23,13 +23,14 @@ CREATE TABLE IF NOT EXISTS leads (
     city TEXT,
     country TEXT,
     status TEXT DEFAULT '',
-    assigned_session TEXT DEFAULT ''
+    assigned_session TEXT DEFAULT '',
+    category TEXT DEFAULT 'Default'
 );
 """
 
 QUERY_INSERT_LEAD = """
-INSERT OR IGNORE INTO leads (phone, name, city, country, status, assigned_session)
-VALUES (?, ?, ?, ?, ?, ?);
+INSERT OR IGNORE INTO leads (phone, name, city, country, status, assigned_session, category)
+VALUES (?, ?, ?, ?, ?, ?, ?);
 """
 
 def load_dynamic_country_data(filepath: str) -> tuple[dict, dict]:
@@ -60,10 +61,10 @@ def load_dynamic_country_data(filepath: str) -> tuple[dict, dict]:
 
 def main():
     input_file = os.path.expanduser('~/marketing/scraper/gmaps-output/results.csv')
-    output_file = os.path.expanduser('~/marketing/postProcessing/results.csv')
-    cities_db_path = os.path.expanduser('~/marketing/queries/cities.db')
-    country_info_path = os.path.expanduser('~/marketing/queries/countryInfo.txt')
-    leads_db_path = os.path.expanduser('~/marketing/main/leads.db')
+    output_file = os.path.expanduser('~/marketing/programs/db/results.csv')
+    cities_db_path = os.path.expanduser('~/marketing/programs/db/cities.db')
+    country_info_path = os.path.expanduser('~/marketing/programs/db/countryInfo.txt')
+    leads_db_path = os.path.expanduser('~/marketing/programs/db/leads.db')
 
     print(f"Reading from {input_file}")
     
@@ -82,8 +83,18 @@ def main():
 
     country_prefixes, country_display_map = load_dynamic_country_data(country_info_path)
     print(f"Loaded metadata rules for {len(country_display_map)} countries.")
+    
+    categories_file = os.path.expanduser('~/marketing/programs/queries/categories.json')
+    categories = []
+    if os.path.exists(categories_file):
+        try:
+            with open(categories_file, 'r', encoding='utf-8') as cf:
+                data = json.load(cf)
+                categories = data.get('categories', [])
+        except Exception as e:
+            print(f"Warning: Failed to load categories.json: {e}")
 
-    fieldnames = ['Name', 'City', 'Country', 'Phone #', 'Status', 'Assigned Session']
+    fieldnames = ['Name', 'City', 'Country', 'Phone #', 'Status', 'Assigned Session', 'Category']
     existing_phones = set()
     output_exists = os.path.exists(output_file) and os.path.getsize(output_file) > 0
 
@@ -118,7 +129,7 @@ def main():
             new_rows = []
             skipped_dup = 0
             
-            for row in tqdm(reader, total=total_rows, desc="Processing Leads", unit="lead", colour="green"):
+            for row in tqdm(reader, total=total_rows, desc="Processing Leads", unit="lead", colour="green", ncols=110):
 
                 if row.get('website', '').strip():
                     continue
@@ -128,28 +139,40 @@ def main():
                     continue
                     
                 name = row.get('title', '').title().split(' • ')[0].split(' - ')[0].strip() if row.get('title') else 'Unknown'
+                
+                category = 'Default'
+                title_for_cat = row.get('title', '').lower()
+                for cat in categories:
+                    matched = False
+                    for kw in cat.get('keywords', []):
+                        if kw.lower() in title_for_cat:
+                            category = cat.get('name', 'Default')
+                            matched = True
+                            break
+                    if matched:
+                        break
+                        
                 city, country_lookup = '', 'NI'
                 
                 lat_str = row.get('latitude', '').strip() if row.get('latitude') else ''
                 lon_str = row.get('longitude', '').strip() if row.get('longitude') else ''
                 
                 if lat_str and lon_str:
-                    coord_key = (lat_str, lon_str)
-                    if coord_key in coord_cache:
-                        city, country_lookup = coord_cache[coord_key]
-                    elif cities_cursor:
-                        try:
-                            lat = float(lat_str)
-                            lon = float(lon_str)
-                            
+                    try:
+                        lat = float(lat_str)
+                        lon = float(lon_str)
+                        coord_key = (round(lat, 2), round(lon, 2))
+                        if coord_key in coord_cache:
+                            city, country_lookup = coord_cache[coord_key]
+                        elif cities_cursor:
                             cities_cursor.execute(QUERY_FIND_NEAREST_CITY, (lat - 0.15, lat + 0.15, lon - 0.15, lon + 0.15))
                             db_match = cities_cursor.fetchone()
                             if db_match:
                                 city = db_match[0].title()
                                 country_lookup = db_match[1].upper()
                             coord_cache[coord_key] = (city, country_lookup)
-                        except Exception:
-                            pass
+                    except Exception:
+                        pass
                 
                 country_display = country_display_map.get(country_lookup, country_lookup)
 
@@ -181,7 +204,8 @@ def main():
                     'Country': country_display,
                     'Phone #': phone,
                     'Status': '',
-                    'Assigned Session': ''
+                    'Assigned Session': '',
+                    'Category': category
                 })
         
         if cities_conn:
@@ -202,10 +226,14 @@ def main():
         c = conn.cursor()
         
         c.execute(QUERY_CREATE_LEADS_TABLE)
+        try:
+            c.execute("ALTER TABLE leads ADD COLUMN category TEXT DEFAULT 'Default'")
+        except sqlite3.OperationalError:
+            pass
         
         if new_rows:
             db_data = [
-                (r['Phone #'], r['Name'], r['City'], r['Country'], r.get('Status', ''), r.get('Assigned Session', ''))
+                (r['Phone #'], r['Name'], r['City'], r['Country'], r.get('Status', ''), r.get('Assigned Session', ''), r.get('Category', 'Default'))
                 for r in new_rows
             ]
             c.executemany(QUERY_INSERT_LEAD, db_data)
@@ -215,7 +243,35 @@ def main():
             
         conn.commit()
         conn.close()
-        print(f"Synced {sync_count} new leads to database.")
+        print(f"Synced {sync_count} new leads to local database.")
+        
+        server_ip = None
+        env_file = os.path.expanduser('~/marketing/.env')
+        if os.path.exists(env_file):
+            with open(env_file, 'r') as ef:
+                for line in ef:
+                    if line.strip().startswith('SERVER_IP='):
+                        server_ip = line.strip().split('=', 1)[1].strip()
+
+        if server_ip and new_rows:
+            import requests
+            print(f"\nUploading {len(new_rows)} leads to HomeServer at {server_ip}...")
+            payload = [{
+                "phone": r['Phone #'],
+                "name": r['Name'],
+                "city": r['City'],
+                "country": r['Country'],
+                "category": r.get('Category', 'Default')
+            } for r in new_rows]
+            
+            try:
+                res = requests.post(f"http://{server_ip}:5001/api/upload-leads", json={"leads": payload}, timeout=30)
+                if res.status_code == 200:
+                    print(f"Successfully uploaded leads to HomeServer! ({res.json().get('synced')} synced)")
+                else:
+                    print(f"Failed to upload leads: {res.text}")
+            except Exception as e:
+                print(f"Failed to connect to HomeServer at {server_ip}: {e}")
         
     except Exception as e:
         print(f"\nError: {e}")

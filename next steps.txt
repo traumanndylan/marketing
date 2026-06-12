@@ -1,0 +1,9 @@
+1. In the map, break the USA into individual states
+2. Remove the "Marketing Dashboard" title and icon from the top
+3. Add a run scrapper button (You should be able to choose where to run it, wheter it be the local or cloud - for the remote ones, you'll need to add a server to run them on, if there isn't make a programm that creates .env with SERVER_IP= and you can edit this from the dashboard. If possible tbhe selector should say the name of the machines and other details)
+4. Add a way to clasify the businesses from the scraper results (Is this even possible with the reduced information in fast mode? If not, add it based on the businesses names. If a business doesn't match any keywords, mark it as default or generic)
+5. Push changes to GitHub
+6. Add stats for leads.db, how many total contacts are there, how many from each country, etc.
+7. Move all js and css code in the dashboard into a styles.css and scripts.js file in a subfolder called assets.
+8. Add an ETA to the scraper
+9. 

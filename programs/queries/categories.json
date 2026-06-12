@@ -1,0 +1,98 @@
+{
+  "categories": [
+    {
+      "name": "Agencias",
+      "keywords": [
+        "Agencia",
+        "Inmobiliaria",
+        "Bienes Raíces",
+        "Bienes Raices",
+        "Propiedades",
+        "Viajes",
+        "Turismo",
+        "Consultoría",
+        "Asesoría"
+      ]
+    },
+    {
+      "name": "Clinicas",
+      "keywords": [
+        "Clínica",
+        "Clinica",
+        "Psicólogo",
+        "Psicóloga",
+        "Psicologo",
+        "Psicologa",
+        "Doctor",
+        "Doctora",
+        "Dentista",
+        "Dental",
+        "Odontólogo",
+        "Odontóloga",
+        "Odontologo",
+        "Odontologa",
+        "Ópticas",
+        "Optica",
+        "Opticas",
+        "Veterinaria",
+        "Vet",
+        "Pet",
+        "Terapia",
+        "Médico",
+        "Médica",
+        "Medico",
+        "Medica",
+        "Hospital",
+        "Consultorio",
+        "Salud",
+        "Medicina",
+        "Nutricionista",
+        "Pediatra",
+        "Psiquiatra",
+        "Laboratorio"
+      ]
+    },
+    {
+      "name": "Academias",
+      "keywords": [
+        "Escuela",
+        "Academia",
+        "Instituto",
+        "Clases",
+        "Curso",
+        "Cursos",
+        "Taller",
+        "Educación",
+        "Educacion",
+        "Centro de Estudios",
+        "Capacitación",
+        "Idiomas",
+        "Tutorías"
+      ]
+    },
+    {
+      "name": "Tecnología",
+      "keywords": [
+        "Celulares",
+        "Cell",
+        "Laptops",
+        "Computadoras",
+        "Tech",
+        "Soporte Técnico",
+        "Servicio Técnico",
+        "PC",
+        "Hardware",
+        "Software",
+        "Electrónica",
+        "Electronica",
+        "Computación",
+        "Computacion",
+        "Reparación",
+        "Smart",
+        "Tablet",
+        "Gadgets",
+        "Gamer"
+      ]
+    }
+  ]
+}

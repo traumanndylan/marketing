@@ -8,9 +8,9 @@ import difflib
 from tqdm import tqdm
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-SCRAPER_DIR = os.path.join(SCRIPT_DIR, "..", "scraper")
-DB_PATH = os.path.join(SCRIPT_DIR, "cities.db")
-COUNTRY_INFO_PATH = os.path.join(SCRIPT_DIR, "countryInfo.txt")
+SCRAPER_DIR = os.path.join(SCRIPT_DIR, "..", "..", "scraper")
+DB_PATH = os.path.join(SCRIPT_DIR, "..", "db", "cities.db")
+COUNTRY_INFO_PATH = os.path.join(SCRIPT_DIR, "..", "db", "countryInfo.txt")
 
 DEFAULT_RADIUS = 20000 
 
@@ -123,14 +123,12 @@ def main():
     
     city_data = {}
     
-    print("\n")
-    for city in tqdm(cities, desc="Resolving Coordinates", unit="city", colour="green"):
+    for city in tqdm(cities, desc="Resolving Coordinates", unit="city", colour="green", ncols=110):
         lat, lon = get_coordinates(city, cursor, country_mapping)
         if lat and lon:
             city_data[city] = (lat, lon)
         else:
             tqdm.write(f"No coordinates found for: {city}")
-    print("\n")
 
     conn.close()
 

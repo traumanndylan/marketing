@@ -6,14 +6,19 @@ ZIP_FILE = 'allCountries.zip'
 DB_FILE = 'cities.db'
 
 def build_database():
-    if not os.path.exists(ZIP_FILE):
-        print(f"[ERROR] {ZIP_FILE} not found in the current directory.")
+    if os.path.exists(DB_FILE):
+        print(f"{DB_FILE} already exists. Skipping database build")
         return
+
+    if not os.path.exists(ZIP_FILE):
+        print(f"{ZIP_FILE} not found. Downloading")
+        import urllib.request
+        urllib.request.urlretrieve("http://download.geonames.org/export/dump/allCountries.zip", ZIP_FILE)
 
     conn = sqlite3.connect(DB_FILE)
     cursor = conn.cursor()
 
-    print("Creating database schema...")
+    print("Creating database schema")
     cursor.execute('DROP TABLE IF EXISTS cities')
     cursor.execute('''
         CREATE TABLE cities (
@@ -45,6 +50,9 @@ def build_database():
                     lat = float(parts[4])
                     lon = float(parts[5])
                     country_code = parts[8].lower()
+                    admin1 = parts[10].lower()
+                    if country_code == 'us' and admin1:
+                        country_code = f"us-{admin1}"
                     pop = int(parts[14]) if parts[14].strip() else 0
 
                     batch.append((name, country_code, lat, lon, pop))
@@ -57,12 +65,17 @@ def build_database():
     if batch:
         cursor.executemany(insert_query, batch)
 
-    print(f"Inserted {count} cities. Creating search index...")
+    print(f"Inserted {count} cities")
     cursor.execute('CREATE INDEX idx_name_country ON cities(name, country_code)')
+    cursor.execute('CREATE INDEX idx_lat_lon ON cities(latitude, longitude)')
 
     conn.commit()
     conn.close()
-    print("Database built successfully!")
+    print("Built database")
+    
+    if os.path.exists(ZIP_FILE):
+        os.remove(ZIP_FILE)
+        print(f"Deleted {ZIP_FILE}")
 
 if __name__ == "__main__":
     build_database()
