@@ -108,6 +108,16 @@ def main():
                 if phone:
                     existing_phones.add(phone)
 
+    sent_numbers_file = os.path.expanduser('~/marketing/programs/db/sent_numbers.txt')
+    sent_numbers = set()
+    if os.path.exists(sent_numbers_file):
+        with open(sent_numbers_file, 'r', encoding='utf-8') as f:
+            for line in f:
+                p = line.strip()
+                if p:
+                    existing_phones.add(p)
+                    sent_numbers.add(p)
+
     print(f"Existing contacts loaded: {len(existing_phones)} unique phones\n")
 
     cities_conn = None
@@ -230,6 +240,14 @@ def main():
             c.execute("ALTER TABLE leads ADD COLUMN category TEXT DEFAULT 'Default'")
         except sqlite3.OperationalError:
             pass
+
+        if sent_numbers:
+            for chunk in [list(sent_numbers)[i:i+900] for i in range(0, len(sent_numbers), 900)]:
+                placeholders = ','.join('?' * len(chunk))
+                c.execute(f"DELETE FROM leads WHERE phone IN ({placeholders})", chunk)
+            conn.commit()
+            print(f"Deleted {len(sent_numbers)} previously sent numbers from leads.db")
+
         
         if new_rows:
             db_data = [

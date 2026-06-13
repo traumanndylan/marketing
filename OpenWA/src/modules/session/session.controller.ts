@@ -153,6 +153,22 @@ export class SessionController {
     return qrCode;
   }
 
+  @Post(':id/pairing-code')
+  @ApiOperation({ summary: 'Request OTP pairing code for session authentication' })
+  @ApiParam({ name: 'id', description: 'Session ID' })
+  @ApiResponse({
+    status: 200,
+    description: 'Pairing code generated',
+  })
+  async requestPairingCode(@Param('id') id: string, @Body('phoneNumber') phoneNumber: string): Promise<{ code: string }> {
+    const engine = this.sessionService.getEngine(id);
+    if (!engine) {
+      throw new Error('Session is not started');
+    }
+    const code = await engine.requestPairingCode(phoneNumber);
+    return { code };
+  }
+
   @Get(':id/groups')
   @ApiOperation({ summary: 'Get all groups for a session' })
   @ApiParam({ name: 'id', description: 'Session ID' })

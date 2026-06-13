@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="grid-2">
+    <div class="card">
+        <div class="card-title"><i class="fa-solid fa-mobile-screen"></i> WhatsApp Sessions</div>
+        <div id="sessionsList">
+            <div style="color:var(--muted);font-size:.85rem;">Loading…</div>
+        </div>
+        <hr style="border:0;border-top:1px solid var(--border);margin:1rem 0;">
+        <div class="card-title" style="margin-bottom:.75rem;"><i class="fa-solid fa-plus"></i> Add Session</div>
+        <div class="modal-form-grid" style="gap:.65rem;">
+            <div class="form-group"><label>Custom Name (optional)</label><input type="text" id="newName"></div>
+            <div class="form-group"><label>Country</label><input type="text" id="newCountry"></div>
+            <div class="form-group"><label>Country Code</label><input type="text" id="newCountryCode"></div>
+            <div class="form-group"><label>Session ID</label><input type="text" id="newSessionId"></div>
+        </div>
+        <button class="btn btn-primary" style="margin-top:.9rem;width:100%;" onclick="addSession()"><i
+                class="fa-solid fa-plus"></i> Add Session</button>
+    </div>
+
+    <div class="card" style="display:flex;flex-direction:column;">
+        <div class="card-title"><i class="fa-solid fa-envelope"></i> Message Template</div>
+        <div class="form-row" style="margin-top:0;">
+            <div class="form-group">
+                <label>Country</label>
+                <select id="messageCountrySelect" onchange="loadMessage()">
+                    <option value="default">Default Message</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Category</label>
+                <select id="messageCategorySelect" onchange="loadMessage()">
+                    <option value="default">Default</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group" style="flex:1;display:flex;flex-direction:column;">
+            <label>Message</label>
+            <textarea id="messageEditor" placeholder="Loading…"
+                style="flex:1;resize:vertical;min-height:180px;"></textarea>
+        </div>
+        <button class="btn btn-primary" onclick="saveMessage()" style="width:100%;margin-top:.75rem;"><i
+                class="fa-solid fa-floppy-disk"></i> Save Message</button>
+    </div>
+</div>
+{% endblock %}
+
+{% block modals %}
+<div class="modal-overlay" id="editModal">
+    <div class="modal">
+        <div class="modal-title"><i class="fa-solid fa-pen-to-square"></i> Edit Session</div>
+        <input type="hidden" id="editOldSessionId">
+        <input type="hidden" id="editActive">
+        <div class="modal-form-grid">
+            <div class="form-group form-full">
+                <label>Custom Name <span style="color:var(--muted);font-weight:400;">(leave blank to use country name)</span></label>
+                <input type="text" id="editName" placeholder="Optional display name">
+            </div>
+            <div class="form-group"><label>Country</label><input type="text" id="editCountry" placeholder="Nicaragua"></div>
+            <div class="form-group"><label>Country Code</label><input type="text" id="editCountryCode" placeholder="ni"></div>
+            <div class="form-group form-full"><label>Session ID</label><input type="text" id="editSessionId" placeholder="session-ni"></div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn" onclick="closeEditModal()">Cancel</button>
+            <button class="btn btn-primary" onclick="saveEdit()"><i class="fa-solid fa-check"></i> Save</button>
+        </div>
+    </div>
+</div>
+{% endblock %}

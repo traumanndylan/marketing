@@ -159,7 +159,7 @@ function showToast(message, type = 'info') {
         }
 
         function syncMapWithConfig(text) {
-            if (!text) return;
+            if (!text || !map) return;
             const lines = text.split('\n');
             const countryNames = [];
             lines.forEach(line => {
@@ -210,12 +210,17 @@ function showToast(message, type = 'info') {
         let selectedCountries = [];
 
         function updateSelectedDisplay() {
+            const listEl = document.getElementById('selectedCountriesList');
+            if (!listEl) return;
+            if (!map) { listEl.innerText = 'None'; return; }
             const names = selectedCountries.map(code => map.regions[code]?.config?.name || code);
-            document.getElementById('selectedCountriesList').innerText = names.length ? names.join(', ') : 'None';
+            listEl.innerText = names.length ? names.join(', ') : 'None';
         }
 
         function createMap(mapName = 'world') {
-            document.getElementById('worldMap').innerHTML = '';
+            const container = document.getElementById('worldMap');
+            if (!container) return null;
+            container.innerHTML = '';
             return new jsVectorMap({
                 selector: '#worldMap',
                 map: mapName,
@@ -241,13 +246,14 @@ function showToast(message, type = 'info') {
             const region = document.getElementById('mapRegionSelect').value;
             selectedCountries = [];
             updateSelectedDisplay();
-            map.destroy();
-            map = createMap(region);
+            if (map) {
+                map.destroy();
+                map = createMap(region);
+            }
         }
 
         async function generateCities() {
             if (!selectedCountries.length) {
-                document.getElementById('configEditor').value = "";
                 showToast('List cleared (No countries selected).', 'info');
                 return;
             }
@@ -265,11 +271,14 @@ function showToast(message, type = 'info') {
                 const data = await res.json();
 
                 if (res.ok) {
-                    document.getElementById('configFileSelect').value = 'cities.txt';
-                    document.getElementById('configEditor').value = data.text;
-
+                    await fetch('/api/config/cities.txt', { 
+                        method: 'POST', 
+                        headers: { 'Content-Type': 'application/json' }, 
+                        body: JSON.stringify({ text: data.text }) 
+                    });
+                    
                     updateSelectedDisplay();
-                    showToast(`Generated ${data.count} cities.`, 'success');
+                    showToast(`Generated and saved ${data.count} cities to cities.txt.`, 'success');
                 } else {
                     showToast('Error: ' + data.error, 'error');
                 }
@@ -291,6 +300,19 @@ function showToast(message, type = 'info') {
             fetchStatus();
         }
 
+        async function fetchMessageLimit() {
+            try {
+                const d = await fetch('/api/limit').then(r => r.json());
+                if (d.limit) document.getElementById('globalMessageLimit').value = d.limit;
+            } catch (e) { }
+        }
+
+        async function saveMessageLimit() {
+            const val = document.getElementById('globalMessageLimit').value;
+            await fetch('/api/limit', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ limit: val }) });
+            showToast('Message limit saved.', 'success');
+        }
+
         async function fetchLogs() {
             try {
                 const d = await fetch('/api/logs').then(r => r.json());
@@ -308,9 +330,12 @@ function showToast(message, type = 'info') {
             } catch (e) { }
         }
 
-        document.getElementById('scraperMachineSelect').addEventListener('change', function() {
-            document.getElementById('cloudServerIpGroup').style.display = this.value === 'cloud' ? 'block' : 'none';
-        });
+        const scraperMachineSelect = document.getElementById('scraperMachineSelect');
+        if (scraperMachineSelect) {
+            scraperMachineSelect.addEventListener('change', function() {
+                document.getElementById('cloudServerIpGroup').style.display = this.value === 'cloud' ? 'block' : 'none';
+            });
+        }
 
         async function saveServerIp() {
             const ip = document.getElementById('cloudServerIp').value;
@@ -361,11 +386,38 @@ function showToast(message, type = 'info') {
             } catch (e) {}
         }
 
-        fetchOverview(); fetchSessions(); fetchStatus(); fetchCategories(); loadMessage(); loadConfigFile(); fetchLogs(); fetchScraperEta(); fetchScraperLogs();
-        setInterval(fetchOverview, 5000);
-        setInterval(fetchStatus, 5000);
-        setInterval(fetchLogs, 5000);
-        setInterval(fetchSessions, 10000);
-        setInterval(fetchScraperEta, 5000);
-        setInterval(fetchCategories, 10000);
-        setInterval(fetchScraperLogs, 3000);
+        if (document.getElementById('overviewStats')) {
+            fetchOverview();
+            setInterval(fetchOverview, 5000);
+        }
+        if (document.getElementById('schedulerStatus')) {
+            fetchStatus();
+            setInterval(fetchStatus, 5000);
+        }
+        if (document.getElementById('sessionsList')) {
+            fetchSessions();
+            setInterval(fetchSessions, 10000);
+        }
+        if (document.getElementById('messageCategorySelect')) {
+            fetchCategories();
+            setInterval(fetchCategories, 10000);
+            loadMessage();
+        }
+        if (document.getElementById('configFileSelect')) {
+            loadConfigFile();
+        }
+        if (document.getElementById('logsContainer')) {
+            fetchLogs();
+            setInterval(fetchLogs, 5000);
+        }
+        if (document.getElementById('scraperEta')) {
+            fetchScraperEta();
+            setInterval(fetchScraperEta, 5000);
+        }
+        if (document.getElementById('scraperLogsContainer')) {
+            fetchScraperLogs();
+            setInterval(fetchScraperLogs, 3000);
+        }
+        if (document.getElementById('globalMessageLimit')) {
+            fetchMessageLimit();
+        }

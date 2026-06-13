@@ -216,6 +216,9 @@ export interface IWhatsAppEngine {
   getPhoneNumber(): string | null;
   getPushName(): string | null;
 
+  // Authentication
+  requestPairingCode(phoneNumber: string): Promise<string>;
+
   // Messaging - Basic
   sendTextMessage(chatId: string, text: string): Promise<MessageResult>;
   sendImageMessage(chatId: string, media: MediaInput): Promise<MessageResult>;
@@ -240,6 +243,7 @@ export interface IWhatsAppEngine {
   getContacts(): Promise<Contact[]>;
   getContactById(contactId: string): Promise<Contact | null>;
   checkNumberExists(number: string): Promise<boolean>;
+  createContact(name: string, surname: string, phone: string): Promise<boolean>;
 
   // Groups - Basic
   getGroups(): Promise<Group[]>;

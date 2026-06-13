@@ -9,17 +9,16 @@ import pytz
 app = Flask(__name__)
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
-BASE_DIR = "/home/dylan/marketing/programs"
-MAIN_DIR = os.path.join(BASE_DIR, "main")
-CRON_DIR = os.path.join(BASE_DIR, "cron")
-POST_DIR = os.path.join(BASE_DIR, "postProcessing")
+BASE_DIR = "/home/dylan/marketing/backend"
+MAIN_DIR = os.path.join(BASE_DIR, "worker")
+CRON_DIR = os.path.join(BASE_DIR, "scheduler")
+POST_DIR = os.path.join(BASE_DIR, "post_processing")
+CONFIG_DIR = os.path.join(BASE_DIR, "config")
 
-SESSIONS_FILE = os.path.join(MAIN_DIR, "sessions.json")
+SESSIONS_FILE = os.path.join(CONFIG_DIR, "sessions.json")
 RESULTS_FILE = os.path.join(POST_DIR, "results.csv")
 CRON_LOG = os.path.join(CRON_DIR, "cron.log")
 PAUSED_FILE = os.path.join(CRON_DIR, ".paused")
-
-import pytz
 
 def get_country_timezone(cc):
     try:
@@ -35,9 +34,9 @@ BUSINESS_END_HOUR = 17
 
 scheduler = BackgroundScheduler()
 
-def run_bot_for_country(country_code):
+def run_bot_for_country(country_code, manual=False):
     """Runs main.py for a specific country code."""
-    if os.path.exists(PAUSED_FILE):
+    if os.path.exists(PAUSED_FILE) and not manual:
         return
     
     os.makedirs(CRON_DIR, exist_ok=True)
@@ -105,6 +104,18 @@ def write_json(path, data):
 @app.route("/")
 def index():
     return render_template("index.html")
+
+@app.route("/sessions")
+def sessions_page():
+    return render_template("sessions.html")
+
+@app.route("/generator")
+def generator_page():
+    return render_template("generator.html")
+
+@app.route("/scraper")
+def scraper_page():
+    return render_template("scraper.html")
 
 @app.route("/api/overview")
 def overview():
@@ -225,7 +236,7 @@ def manage_sessions():
             
             cc = new_session.get("country_code")
             if cc:
-                cc_dir = os.path.join(MAIN_DIR, "messages", cc)
+                cc_dir = os.path.join(CONFIG_DIR, "messages", cc)
                 os.makedirs(cc_dir, exist_ok=True)
                 msg_path = os.path.join(cc_dir, "message.default.txt")
                 if not os.path.exists(msg_path):
@@ -279,6 +290,24 @@ def restart_session(session_id):
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+@app.route("/api/limit", methods=["GET", "POST"])
+def manage_limit():
+    if request.method == "GET":
+        try:
+            config = read_json(SESSIONS_FILE)
+            return jsonify({"limit": config.get("message_limit_per_session", 15)})
+        except Exception as e:
+            return jsonify({"error": str(e)}), 500
+    elif request.method == "POST":
+        try:
+            new_limit = int(request.json.get("limit", 15))
+            config = read_json(SESSIONS_FILE)
+            config["message_limit_per_session"] = new_limit
+            write_json(SESSIONS_FILE, config)
+            return jsonify({"success": True})
+        except Exception as e:
+            return jsonify({"error": str(e)}), 500
+
 @app.route("/webhook/session", methods=["POST"])
 def session_webhook():
     data = request.json
@@ -318,7 +347,7 @@ def run_now():
     country = request.json.get("country")
     if action == "run":
         if country:
-            threading.Thread(target=run_bot_for_country, args=(country,)).start()
+            threading.Thread(target=run_bot_for_country, args=(country, True)).start()
         else:
             try:
                 config = read_json(SESSIONS_FILE)
@@ -329,7 +358,7 @@ def run_now():
                         if cc:
                             countries.add(cc)
                 for cc in countries:
-                    threading.Thread(target=run_bot_for_country, args=(cc,)).start()
+                    threading.Thread(target=run_bot_for_country, args=(cc, True)).start()
             except Exception:
                 pass
         return jsonify({"success": True})
@@ -357,7 +386,7 @@ def status():
 @app.route("/api/messages/<country_code>", methods=["GET", "POST"])
 @app.route("/api/messages/<country_code>/<category>", methods=["GET", "POST"])
 def manage_message(country_code, category="default"):
-    cc_dir = os.path.join(MAIN_DIR, "messages", country_code)
+    cc_dir = os.path.join(CONFIG_DIR, "messages", country_code)
     os.makedirs(cc_dir, exist_ok=True)
     path = os.path.join(cc_dir, f"message.{category}.txt")
     if request.method == "GET":
@@ -447,7 +476,7 @@ def manage_config_file(filename):
     if filename not in ["cities.txt", "types.txt", "categories.json"]:
         return jsonify({"error": "Invalid file"}), 400
         
-    filepath = os.path.join(BASE_DIR, "queries", filename)
+    filepath = os.path.join(CONFIG_DIR, filename)
     if request.method == "GET":
         if os.path.exists(filepath):
             with open(filepath, "r", encoding="utf-8") as f:
@@ -462,7 +491,7 @@ def manage_config_file(filename):
 
 @app.route("/api/categories", methods=["GET"])
 def get_categories():
-    filepath = os.path.join(BASE_DIR, "queries", "categories.json")
+    filepath = os.path.join(CONFIG_DIR, "categories.json")
     if os.path.exists(filepath):
         try:
             with open(filepath, "r", encoding="utf-8") as f:
@@ -486,7 +515,7 @@ def get_logs():
 @app.route("/api/scraper/config", methods=["POST"])
 def configure_scraper():
     ip = request.json.get("server_ip", "")
-    env_file = os.path.expanduser("~/marketing/.env")
+    env_file = "/home/dylan/marketing/.env"
     lines = []
     if os.path.exists(env_file):
         with open(env_file, "r") as f:
@@ -502,21 +531,19 @@ def configure_scraper():
 @app.route("/api/scraper/run", methods=["POST"])
 def run_scraper_endpoint():
     target = request.json.get("target", "local")
-    scraper_script = os.path.expanduser("~/marketing/scraper.py")
+    scraper_script = "/home/dylan/marketing/scraper.py"
     
     try:
         # Clear old ETA
-        eta_file = os.path.expanduser("~/marketing/scraper/eta.txt")
+        eta_file = "/home/dylan/marketing/scraper/eta.txt"
         if os.path.exists(eta_file):
             os.remove(eta_file)
             
-        log_file_path = os.path.expanduser("~/marketing/scraper/scraper.log")
+        log_file_path = "/home/dylan/marketing/scraper/scraper.log"
+        os.makedirs(os.path.dirname(log_file_path), exist_ok=True)
         log_file = open(log_file_path, "w")
         
-        if target == "local":
-            subprocess.Popen(["python3", scraper_script], cwd=os.path.expanduser("~/marketing"), stdout=log_file, stderr=subprocess.STDOUT)
-        else:
-            subprocess.Popen(["python3", scraper_script], cwd=os.path.expanduser("~/marketing"), stdout=log_file, stderr=subprocess.STDOUT)
+        subprocess.Popen(["python3", scraper_script], cwd="/home/dylan/marketing", stdout=log_file, stderr=subprocess.STDOUT)
             
         return jsonify({"success": True})
     except Exception as e:
@@ -525,7 +552,7 @@ def run_scraper_endpoint():
 @app.route("/api/scraper/eta")
 def get_scraper_eta():
     try:
-        eta_file = os.path.expanduser("~/marketing/scraper/eta.txt")
+        eta_file = "/home/dylan/marketing/scraper/eta.txt"
         if os.path.exists(eta_file):
             with open(eta_file, "r") as f:
                 return jsonify({"eta": f.read().strip()})
@@ -536,7 +563,7 @@ def get_scraper_eta():
 @app.route("/api/scraper/logs")
 def get_scraper_logs():
     try:
-        log_file = os.path.expanduser("~/marketing/scraper/scraper.log")
+        log_file = "/home/dylan/marketing/scraper/scraper.log"
         if os.path.exists(log_file):
             with open(log_file, "r", encoding="utf-8") as f:
                 # Read last 100 lines to avoid massive payloads

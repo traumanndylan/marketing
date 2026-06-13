@@ -64,6 +64,9 @@ def get_coordinates(city_string: str, cursor, country_mapping: dict) -> tuple:
         search_country = remove_accents(parts[1])
         country_code = country_mapping.get(search_country)
 
+    if not hasattr(get_coordinates, "country_cities_cache"):
+        get_coordinates.country_cities_cache = {}
+
     if country_code:
         cursor.execute('''
             SELECT latitude, longitude FROM cities
@@ -82,15 +85,17 @@ def get_coordinates(city_string: str, cursor, country_mapping: dict) -> tuple:
         return result[0], result[1]
 
     if country_code:
-        cursor.execute('''
-            SELECT name, latitude, longitude FROM cities
-            WHERE country_code = ?
-            ORDER BY population DESC LIMIT 5000
-        ''', (country_code,))
-        
-        country_cities = cursor.fetchall()
-        city_dict = {remove_accents(row[0]): (row[1], row[2]) for row in country_cities}
-        
+        if country_code not in get_coordinates.country_cities_cache:
+            cursor.execute('''
+                SELECT name, latitude, longitude FROM cities
+                WHERE country_code = ?
+                ORDER BY population DESC LIMIT 5000
+            ''', (country_code,))
+            
+            country_cities = cursor.fetchall()
+            get_coordinates.country_cities_cache[country_code] = {remove_accents(row[0]): (row[1], row[2]) for row in country_cities}
+            
+        city_dict = get_coordinates.country_cities_cache[country_code]
         matches = difflib.get_close_matches(search_city, city_dict.keys(), n=1, cutoff=0.75)
         
         if matches:

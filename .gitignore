@@ -4,4 +4,4 @@
 *.bak
 *.log
 .env
-
+/*.sh

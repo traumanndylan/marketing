@@ -66,8 +66,8 @@ def build_database():
         cursor.executemany(insert_query, batch)
 
     print(f"Inserted {count} cities")
-    cursor.execute('CREATE INDEX idx_name_country ON cities(name, country_code)')
-    cursor.execute('CREATE INDEX idx_lat_lon ON cities(latitude, longitude)')
+    cursor.execute('CREATE INDEX IF NOT EXISTS idx_name_country ON cities(name, country_code)')
+    cursor.execute('CREATE INDEX IF NOT EXISTS idx_lat_lon ON cities(latitude, longitude)')
 
     conn.commit()
     conn.close()

@@ -2,6 +2,7 @@ import { EventEmitter } from 'events';
 import { Client, LocalAuth, MessageMedia } from 'whatsapp-web.js';
 import * as qrcode from 'qrcode';
 import * as path from 'path';
+import { parsePhoneNumberFromString } from 'libphonenumber-js';
 import {
   IWhatsAppEngine,
   EngineStatus,
@@ -269,6 +270,13 @@ export class WhatsAppWebJsAdapter extends EventEmitter implements IWhatsAppEngin
     return this.pushName;
   }
 
+  async requestPairingCode(phoneNumber: string): Promise<string> {
+    if (!this.client) {
+      throw new Error('Client not initialized');
+    }
+    return await this.client.requestPairingCode(phoneNumber);
+  }
+
   async sendTextMessage(chatId: string, text: string): Promise<MessageResult> {
     this.ensureReady();
 
@@ -359,6 +367,85 @@ export class WhatsAppWebJsAdapter extends EventEmitter implements IWhatsAppEngin
     this.ensureReady();
     const numberId = await this.client!.getNumberId(number);
     return numberId !== null;
+  }
+
+  async createContact(name: string, surname: string, phone: string): Promise<boolean> {
+    this.ensureReady();
+    try {
+      const page = this.client!.pupPage;
+      if (!page) {
+        throw new Error('Puppeteer page is not available');
+      }
+
+      const parsed = parsePhoneNumberFromString('+' + phone);
+      const cc = parsed ? `+${parsed.countryCallingCode}` : '';
+      const nn = parsed ? parsed.nationalNumber : phone;
+
+      await page.evaluate(async (n, s, countryCode, nationalNumber) => {
+        // 1. Click "New chat" button
+        const newChatBtn = document.querySelector('div[title="Nuevo chat"], div[title="New chat"], div[aria-label="New chat"], div[aria-label="Nuevo chat"], span[data-icon="chat"]') as HTMLElement;
+        if (!newChatBtn) throw new Error('New chat button not found');
+        ((newChatBtn.closest('div[role="button"]') as HTMLElement) || newChatBtn).click();
+
+        await new Promise(r => setTimeout(r, 1000));
+
+        // 2. Click "New contact"
+        const allDivs = Array.from(document.querySelectorAll('div[role="button"]'));
+        const newContactDiv = allDivs.find(el => {
+          const text = el.textContent || '';
+          return text.includes('New contact') || text.includes('Nuevo contacto');
+        });
+        if (!newContactDiv) throw new Error('New contact button not found');
+        (newContactDiv as HTMLElement).click();
+
+        await new Promise(r => setTimeout(r, 1000));
+
+        // 3. Fill in details
+        const inputs = Array.from(document.querySelectorAll('input'));
+        if (inputs.length < 3) throw new Error('Contact form inputs not found');
+
+        const typeText = (input: HTMLInputElement, text: string) => {
+          input.focus();
+          document.execCommand('selectAll', false, '');
+          document.execCommand('insertText', false, text);
+        };
+
+        const textInputs = inputs.filter(i => i.type === 'text' || i.type === 'tel' || !i.type);
+        if (textInputs.length >= 4) {
+          typeText(textInputs[textInputs.length - 4], n); // Name
+          typeText(textInputs[textInputs.length - 3], s); // Surname
+          if (countryCode) {
+              typeText(textInputs[textInputs.length - 2], countryCode);
+          }
+          typeText(textInputs[textInputs.length - 1], nationalNumber); // Phone
+        } else if (textInputs.length >= 3) {
+          typeText(textInputs[textInputs.length - 3], n);
+          typeText(textInputs[textInputs.length - 2], s);
+          typeText(textInputs[textInputs.length - 1], nationalNumber);
+        }
+
+        await new Promise(r => setTimeout(r, 1500));
+
+        const saveBtn = document.querySelector('span[data-icon="checkmark-light"], span[data-icon="check"]') as HTMLElement;
+        if (saveBtn) {
+          ((saveBtn.closest('div[role="button"]') as HTMLElement) || (saveBtn.closest('button') as HTMLElement) || saveBtn).click();
+        } else {
+          const btns = Array.from(document.querySelectorAll('div[role="button"], button'));
+          const fallbackBtn = btns.find(b => b.textContent?.includes('Save') || b.textContent?.includes('Guardar'));
+          if (fallbackBtn) (fallbackBtn as HTMLElement).click();
+          else throw new Error('Save button not found');
+        }
+
+        await new Promise(r => setTimeout(r, 2000));
+
+      }, name, surname, cc, nn);
+
+      this.logger.log(`Successfully created contact: ${name} ${surname} (${phone})`);
+      return true;
+    } catch (error) {
+      this.logger.error(`Failed to create contact via Puppeteer: ${String(error)}`);
+      return false;
+    }
   }
 
   async getGroups(): Promise<Group[]> {

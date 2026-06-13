@@ -56,6 +56,7 @@
     "dockerode": "^4.0.9",
     "helmet": "^8.0.0",
     "ioredis": "^5.9.3",
+    "libphonenumber-js": "^1.13.6",
     "pg": "^8.18.0",
     "qrcode": "^1.5.4",
     "reflect-metadata": "^0.2.2",

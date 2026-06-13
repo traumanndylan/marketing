@@ -33,18 +33,21 @@ services:
 
   dashboard:
     build:
-      context: ./programs/dashboard
+      context: ./backend/api
       dockerfile: Dockerfile
     container_name: homeserver-dashboard
     ports:
       - "5001:5001"
     volumes:
-      - ./programs/main:/home/dylan/marketing/programs/main
-      - ./programs/cron:/home/dylan/marketing/programs/cron
-      - ./programs/postProcessing:/home/dylan/marketing/programs/postProcessing
-      - ./programs/queries:/home/dylan/marketing/programs/queries
-      - ./programs/db:/home/dylan/marketing/programs/db
-      - ./programs/dashboard/templates:/app/templates
+      - ./backend/worker:/home/dylan/marketing/backend/worker
+      - ./backend/scheduler:/home/dylan/marketing/backend/scheduler
+      - ./backend/post_processing:/home/dylan/marketing/backend/post_processing
+      - ./backend/config:/home/dylan/marketing/backend/config
+      - ./backend/db:/home/dylan/marketing/backend/db
+      - ./backend/api/templates:/app/templates
+      - ./scraper.py:/home/dylan/marketing/scraper.py
+      - ./scraper:/home/dylan/marketing/scraper
+      - ./.env:/home/dylan/marketing/.env
     depends_on:
       openwa:
         condition: service_healthy

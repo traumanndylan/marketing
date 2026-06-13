@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="grid-2">
+    <div class="card" style="display:flex;flex-direction:column;">
+        <div class="card-title"><i class="fa-solid fa-list"></i> Scraper Configuration</div>
+        <div class="form-row" style="margin-top:0; margin-bottom:1rem;">
+            <div class="form-group form-full">
+                <label>File to Edit</label>
+                <select id="configFileSelect" onchange="loadConfigFile()">
+                    <option value="cities.txt">cities.txt (Locations)</option>
+                    <option value="types.txt">types.txt (Search Queries)</option>
+                    <option value="categories.json">categories.json (Business Categories)</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group" style="flex:1;display:flex;flex-direction:column;">
+            <textarea id="configEditor" placeholder="Loading…"
+                style="flex:1;resize:vertical;min-height:180px;"></textarea>
+        </div>
+        <button class="btn btn-primary" onclick="saveConfigFile()" style="width:100%;margin-top:.75rem;"><i
+                class="fa-solid fa-floppy-disk"></i> Save File</button>
+    </div>
+
+    <div class="card" style="display:flex;flex-direction:column;">
+        <div class="card-title"><i class="fa-solid fa-robot"></i> Scraper Execution</div>
+        <div class="form-group">
+            <label>Target Machine</label>
+            <select id="scraperMachineSelect">
+                <option value="local">Local Machine</option>
+                <option value="cloud">Cloud Server (env: SERVER_IP)</option>
+            </select>
+        </div>
+        <div class="form-group" id="cloudServerIpGroup" style="margin-top:.75rem; display:none;">
+            <label>Cloud Server IP</label>
+            <input type="text" id="cloudServerIp" placeholder="e.g. 192.168.1.100">
+            <button class="btn btn-primary" onclick="saveServerIp()" style="margin-top:.5rem;"><i
+                    class="fa-solid fa-save"></i> Save IP</button>
+        </div>
+        <button class="btn btn-primary" onclick="runScraper()" style="width:100%;margin-top:1.5rem;"><i
+                class="fa-solid fa-play"></i> Run Scraper</button>
+
+        <div style="margin-top:1rem; display:flex; justify-content:space-between; align-items:flex-end;">
+            <div>
+                <div style="font-size: .8rem; color: var(--muted); margin-bottom: .25rem;">ETA</div>
+                <div id="scraperEta" style="font-size: 1.2rem; font-weight: 600; color: var(--accent);">—</div>
+            </div>
+        </div>
+        
+        <div style="margin-top:1rem; flex:1; display:flex; flex-direction:column;">
+            <div style="font-size: .8rem; color: var(--muted); margin-bottom: .25rem;">Scraper Logs</div>
+            <div class="logs-box" id="scraperLogsContainer" style="height:150px; font-size:0.75rem;">Waiting for scraper to start...</div>
+        </div>
+    </div>
+</div>
+{% endblock %}

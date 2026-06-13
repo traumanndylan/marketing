@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Delete, Param, HttpCode, HttpStatus } from '@nestjs/common';
+import { Controller, Get, Post, Delete, Param, HttpCode, HttpStatus, Body } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiParam } from '@nestjs/swagger';
 import { SessionService } from '../session/session.service';
 
@@ -67,6 +67,28 @@ export class ContactController {
   }
 
   // ========== Gap Quick Wins: Profile Picture, Block/Unblock ==========
+
+  @Post('create')
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Create a new contact in WhatsApp Web' })
+  @ApiParam({ name: 'sessionId', description: 'Session ID' })
+  @ApiResponse({
+    status: 200,
+    description: 'Contact created successfully',
+  })
+  async createContact(
+    @Param('sessionId') sessionId: string,
+    @Body('name') name: string,
+    @Body('surname') surname: string,
+    @Body('phone') phone: string,
+  ) {
+    const engine = this.sessionService.getEngine(sessionId);
+    if (!engine) {
+      throw new Error('Session is not started');
+    }
+    const success = await engine.createContact(name, surname, phone);
+    return { success, message: success ? 'Contact created' : 'Failed to create contact' };
+  }
 
   @Get(':contactId/profile-picture')
   @ApiOperation({ summary: 'Get profile picture URL for a contact' })
