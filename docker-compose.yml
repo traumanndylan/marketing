@@ -35,19 +35,27 @@ services:
     build:
       context: ./backend/api
       dockerfile: Dockerfile
-    container_name: homeserver-dashboard
+    container_name: marketing-dashboard
     ports:
       - "5001:5001"
     volumes:
-      - ./backend/worker:/home/dylan/marketing/backend/worker
-      - ./backend/scheduler:/home/dylan/marketing/backend/scheduler
-      - ./backend/post_processing:/home/dylan/marketing/backend/post_processing
-      - ./backend/config:/home/dylan/marketing/backend/config
-      - ./backend/db:/home/dylan/marketing/backend/db
+      - ./backend/api/app.py:/app/app.py
       - ./backend/api/templates:/app/templates
-      - ./scraper.py:/home/dylan/marketing/scraper.py
-      - ./scraper:/home/dylan/marketing/scraper
-      - ./.env:/home/dylan/marketing/.env
+      - ./backend/api/static:/app/static
+
+      - ./backend/worker:/worker
+      - ./backend/scheduler:/scheduler
+      - ./backend/post_processing:/post_processing
+      - ./backend/config:/config
+      - ./backend/db:/db
+
+      - ./scraper.py:/scraper.py
+      - ./scraper:/scraper
+      - ./.env:/.env
+
+      - /run/user/1000/podman/podman.sock:/run/podman/podman.sock
+    environment:
+      - CONTAINER_HOST=unix:///run/podman/podman.sock
     depends_on:
       openwa:
         condition: service_healthy

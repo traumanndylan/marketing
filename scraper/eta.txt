@@ -1,1 +1,1 @@
-0m 0s
+{"status": "running", "eta": 0, "progress": 144, "total": 144}

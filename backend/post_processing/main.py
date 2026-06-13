@@ -60,13 +60,20 @@ def load_dynamic_country_data(filepath: str) -> tuple[dict, dict]:
     return prefixes, display_map
 
 def main():
-    input_file = os.path.expanduser('~/marketing/scraper/gmaps-output/results.csv')
-    output_file = os.path.expanduser('~/marketing/programs/db/results.csv')
-    cities_db_path = os.path.expanduser('~/marketing/programs/db/cities.db')
-    country_info_path = os.path.expanduser('~/marketing/programs/db/countryInfo.txt')
-    leads_db_path = os.path.expanduser('~/marketing/programs/db/leads.db')
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    projects_dir = os.path.abspath(os.path.join(script_dir, '..', '..'))
+    
+    input_file = os.path.join(projects_dir, 'scraper', 'gmaps-output', 'results.csv')
+    output_file = os.path.join(projects_dir, 'backend', 'db', 'results.csv')
+    cities_db_path = os.path.join(projects_dir, 'backend', 'db', 'cities.db')
+    country_info_path = os.path.join(projects_dir, 'backend', 'db', 'countryInfo.txt')
+    leads_db_path = os.path.join(projects_dir, 'backend', 'db', 'leads.db')
 
     print(f"Reading from {input_file}")
+    
+    if not os.path.exists(input_file):
+        print(f"No results found at {input_file}. Nothing to process.")
+        return
     
     blacklist_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'blacklist.json')
     blacklist_regex = None
@@ -84,7 +91,7 @@ def main():
     country_prefixes, country_display_map = load_dynamic_country_data(country_info_path)
     print(f"Loaded metadata rules for {len(country_display_map)} countries.")
     
-    categories_file = os.path.expanduser('~/marketing/programs/queries/categories.json')
+    categories_file = os.path.join(projects_dir, 'backend', 'config', 'categories.json')
     categories = []
     if os.path.exists(categories_file):
         try:
@@ -108,7 +115,7 @@ def main():
                 if phone:
                     existing_phones.add(phone)
 
-    sent_numbers_file = os.path.expanduser('~/marketing/programs/db/sent_numbers.txt')
+    sent_numbers_file = os.path.join(projects_dir, 'backend', 'db', 'sent_numbers.txt')
     sent_numbers = set()
     if os.path.exists(sent_numbers_file):
         with open(sent_numbers_file, 'r', encoding='utf-8') as f:
@@ -264,7 +271,7 @@ def main():
         print(f"Synced {sync_count} new leads to local database.")
         
         server_ip = None
-        env_file = os.path.expanduser('~/marketing/.env')
+        env_file = os.path.join(projects_dir, '.env')
         if os.path.exists(env_file):
             with open(env_file, 'r') as ef:
                 for line in ef:

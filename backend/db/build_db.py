@@ -2,8 +2,9 @@ import sqlite3
 import zipfile
 import os
 
-ZIP_FILE = 'allCountries.zip'
-DB_FILE = 'cities.db'
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+ZIP_FILE = os.path.join(SCRIPT_DIR, 'allCountries.zip')
+DB_FILE = os.path.join(SCRIPT_DIR, 'cities.db')
 
 def build_database():
     if os.path.exists(DB_FILE):

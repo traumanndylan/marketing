@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,30 +11,44 @@
     <script src="https://cdn.jsdelivr.net/npm/jsvectormap"></script>
     <script src="https://cdn.jsdelivr.net/npm/jsvectormap/dist/maps/world.js"></script>
     <script src="{{ url_for('static', filename='assets/us-aea-en.js') }}"></script>
-    <link rel="stylesheet" href="{{ url_for('static', filename='assets/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/styles.css') }}?v=3">
     <style>
-        .navbar { 
-            background: var(--surface); 
-            padding: 1rem 2rem; 
-            display: flex; 
-            gap: 1.5rem; 
-            border-bottom: 1px solid var(--border); 
-            margin-bottom: 1.5rem; 
+        .navbar {
+            background: var(--surface);
+            padding: 1rem 2rem;
+            display: flex;
+            gap: 1.5rem;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 1.5rem;
         }
-        .navbar a { 
-            color: var(--muted); 
-            text-decoration: none; 
-            font-weight: 500; 
+
+        .navbar a {
+            color: var(--muted);
+            text-decoration: none;
+            font-weight: 500;
             display: flex;
             align-items: center;
             gap: 0.5rem;
             transition: color 0.2s;
         }
-        .navbar a:hover, .navbar a.active { 
-            color: var(--text); 
+
+        .navbar a:hover,
+        .navbar a.active {
+            color: var(--text);
+        }
+
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type=number] {
+            -moz-appearance: textfield;
         }
     </style>
 </head>
+
 <body>
     <div class="toast-container" id="toastContainer"></div>
     <div class="confirm-overlay" id="confirmOverlay">
@@ -41,16 +56,21 @@
             <p id="confirmMessage">Are you sure?</p>
             <div class="modal-footer">
                 <button class="btn" onclick="confirmResolve(false)">Cancel</button>
-                <button class="btn btn-primary" onclick="confirmResolve(true)"><i class="fa-solid fa-check"></i> Confirm</button>
+                <button class="btn btn-primary" onclick="confirmResolve(true)"><i class="fa-solid fa-check"></i>
+                    Confirm</button>
             </div>
         </div>
     </div>
-    
+
     <div class="navbar">
-        <a href="/" class="{% if request.path == '/' %}active{% endif %}"><i class="fa-solid fa-chart-pie"></i> Overview</a>
-        <a href="/sessions" class="{% if request.path == '/sessions' %}active{% endif %}"><i class="fa-solid fa-mobile-screen"></i> Sessions</a>
-        <a href="/generator" class="{% if request.path == '/generator' %}active{% endif %}"><i class="fa-solid fa-earth-americas"></i> Map</a>
-        <a href="/scraper" class="{% if request.path == '/scraper' %}active{% endif %}"><i class="fa-solid fa-robot"></i> Scraper</a>
+        <a href="/" class="{% if request.path == '/' %}active{% endif %}"><i class="fa-solid fa-chart-pie"></i>
+            Overview</a>
+        <a href="/sessions" class="{% if request.path == '/sessions' %}active{% endif %}"><i
+                class="fa-solid fa-mobile-screen"></i> Sessions</a>
+        <a href="/generator" class="{% if request.path == '/generator' %}active{% endif %}"><i
+                class="fa-solid fa-earth-americas"></i> Map</a>
+        <a href="/scraper" class="{% if request.path == '/scraper' %}active{% endif %}"><i
+                class="fa-solid fa-robot"></i> Scraper</a>
     </div>
 
     <div class="container">
@@ -59,6 +79,7 @@
 
     {% block modals %}{% endblock %}
 
-    <script src="{{ url_for('static', filename='assets/scripts.js') }}?v=2"></script>
+    <script src="{{ url_for('static', filename='assets/scripts.js') }}?v=12"></script>
 </body>
+
 </html>

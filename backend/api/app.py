@@ -9,7 +9,10 @@ import pytz
 app = Flask(__name__)
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
-BASE_DIR = "/home/dylan/marketing/backend"
+API_DIR = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = os.path.dirname(API_DIR)
+ROOT_DIR = os.path.dirname(BASE_DIR)
+
 MAIN_DIR = os.path.join(BASE_DIR, "worker")
 CRON_DIR = os.path.join(BASE_DIR, "scheduler")
 POST_DIR = os.path.join(BASE_DIR, "post_processing")
@@ -35,7 +38,6 @@ BUSINESS_END_HOUR = 17
 scheduler = BackgroundScheduler()
 
 def run_bot_for_country(country_code, manual=False):
-    """Runs main.py for a specific country code."""
     if os.path.exists(PAUSED_FILE) and not manual:
         return
     
@@ -52,7 +54,6 @@ def run_bot_for_country(country_code, manual=False):
     )
 
 def sync_scheduler():
-    """Reads sessions.json and ensures one scheduled job exists per unique country_code."""
     try:
         config = read_json(SESSIONS_FILE)
     except Exception:
@@ -176,7 +177,6 @@ def upload_leads():
             );
         """)
         
-        # Add category column if missing
         try:
             c.execute("ALTER TABLE leads ADD COLUMN category TEXT DEFAULT 'Default'")
         except sqlite3.OperationalError:
@@ -512,10 +512,54 @@ def get_logs():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+@app.route("/api/logs/clear", methods=["POST"])
+def clear_logs():
+    target = request.json.get("target")
+    try:
+        if target == "main":
+            log_file = CRON_LOG
+        elif target == "scraper":
+            log_file = os.path.join(ROOT_DIR, "scraper", "scraper.log")
+        else:
+            return jsonify({"success": False, "error": "Invalid target"})
+            
+        if os.path.exists(log_file):
+            open(log_file, "w").close()
+        return jsonify({"success": True})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route("/api/openwa/otp", methods=["POST"])
+def request_otp():
+    try:
+        import requests
+        session_id = request.json.get("session_id")
+        phone = request.json.get("phone")
+        if not session_id or not phone:
+            return jsonify({"error": "Missing session_id or phone"}), 400
+            
+        r1 = requests.post(f"http://openwa:2785/api/sessions/{session_id}/start", headers={"X-API-Key": "dev-admin-key"}, timeout=10)
+        
+        import time
+        time.sleep(2)
+        
+        r2 = requests.post(
+            f"http://openwa:2785/api/sessions/{session_id}/pairing-code",
+            headers={"X-API-Key": "dev-admin-key", "Content-Type": "application/json"},
+            json={"phoneNumber": phone},
+            timeout=10
+        )
+        if r2.status_code in (200, 201):
+            return jsonify({"success": True, "code": r2.json().get("code")})
+        else:
+            return jsonify({"error": f"Failed to get code: {r2.text}"}), 500
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 @app.route("/api/scraper/config", methods=["POST"])
 def configure_scraper():
     ip = request.json.get("server_ip", "")
-    env_file = "/home/dylan/marketing/.env"
+    env_file = os.path.join(ROOT_DIR, ".env")
     lines = []
     if os.path.exists(env_file):
         with open(env_file, "r") as f:
@@ -531,42 +575,66 @@ def configure_scraper():
 @app.route("/api/scraper/run", methods=["POST"])
 def run_scraper_endpoint():
     target = request.json.get("target", "local")
-    scraper_script = "/home/dylan/marketing/scraper.py"
     
     try:
-        # Clear old ETA
-        eta_file = "/home/dylan/marketing/scraper/eta.txt"
+        scraper_script = os.path.join(ROOT_DIR, "scraper.py")
+        eta_file = os.path.join(ROOT_DIR, "scraper", "eta.txt")
+        log_file_path = os.path.join(ROOT_DIR, "scraper", "scraper.log")
+        
         if os.path.exists(eta_file):
             os.remove(eta_file)
             
-        log_file_path = "/home/dylan/marketing/scraper/scraper.log"
         os.makedirs(os.path.dirname(log_file_path), exist_ok=True)
         log_file = open(log_file_path, "w")
         
-        subprocess.Popen(["python3", scraper_script], cwd="/home/dylan/marketing", stdout=log_file, stderr=subprocess.STDOUT)
-            
+        subprocess.Popen(["python3", scraper_script], cwd=ROOT_DIR, stdout=log_file, stderr=subprocess.STDOUT)
+
         return jsonify({"success": True})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route("/api/scraper/stop", methods=["POST"])
+def stop_scraper_endpoint():
+    try:
+        import subprocess
+        scraper_script = os.path.join(ROOT_DIR, "scraper.py")
+        p = subprocess.run(["pgrep", "-f", f"python3 {scraper_script}"], capture_output=True, text=True)
+        pids = p.stdout.strip().split('\n')
+        stopped = False
+        for pid in pids:
+            if pid:
+                subprocess.run(["kill", "-SIGINT", pid])
+                stopped = True
+        
+        if stopped:
+            return jsonify({"success": True, "message": "Stop signal sent."})
+        else:
+            return jsonify({"success": False, "error": "Scraper is not running."})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
 @app.route("/api/scraper/eta")
 def get_scraper_eta():
     try:
-        eta_file = "/home/dylan/marketing/scraper/eta.txt"
+        eta_file = os.path.join(ROOT_DIR, "scraper", "eta.txt")
         if os.path.exists(eta_file):
             with open(eta_file, "r") as f:
-                return jsonify({"eta": f.read().strip()})
-        return jsonify({"eta": None})
+                import json
+                try:
+                    data = json.load(f)
+                    return jsonify(data)
+                except json.JSONDecodeError:
+                    return jsonify({"eta": f.read().strip()})
+        return jsonify({"status": "idle", "eta": None})
     except Exception:
-        return jsonify({"eta": None})
+        return jsonify({"status": "error", "eta": None})
 
 @app.route("/api/scraper/logs")
 def get_scraper_logs():
     try:
-        log_file = "/home/dylan/marketing/scraper/scraper.log"
+        log_file = os.path.join(ROOT_DIR, "scraper", "scraper.log")
         if os.path.exists(log_file):
             with open(log_file, "r", encoding="utf-8") as f:
-                # Read last 100 lines to avoid massive payloads
                 lines = f.readlines()
                 return jsonify({"logs": lines[-100:]})
         return jsonify({"logs": []})
@@ -577,4 +645,4 @@ if __name__ == "__main__":
     scheduler.start()
     sync_scheduler()
     print("Scheduler started")
-    app.run(host="0.0.0.0", port=5001)
+    app.run(host="0.0.0.0", port=5001, debug=True, use_reloader=False)

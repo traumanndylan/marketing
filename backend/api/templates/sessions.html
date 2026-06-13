@@ -67,4 +67,23 @@
         </div>
     </div>
 </div>
+<div class="modal-overlay" id="otpModal">
+    <div class="modal">
+        <div class="modal-title"><i class="fa-solid fa-link"></i> Link via OTP</div>
+        <input type="hidden" id="otpSessionId">
+        <div class="modal-form-grid">
+            <div class="form-group form-full">
+                <label>Phone Number (with country code)</label>
+                <input type="text" id="otpPhone" placeholder="e.g. 527712381853">
+            </div>
+        </div>
+        <div class="modal-footer" style="flex-direction: column; align-items: stretch; gap: 0.5rem;">
+            <div style="display:flex; justify-content:flex-end; gap:0.5rem;">
+                <button class="btn" onclick="closeOtpModal()">Cancel</button>
+                <button class="btn btn-primary" onclick="submitOtp()"><i class="fa-solid fa-paper-plane"></i> Get Code</button>
+            </div>
+            <div id="otpResult" style="text-align:center; font-size:1.5rem; font-weight:bold; letter-spacing:4px; margin-top:1rem; color:var(--accent);"></div>
+        </div>
+    </div>
+</div>
 {% endblock %}

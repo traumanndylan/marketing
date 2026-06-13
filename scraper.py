@@ -28,7 +28,7 @@ from tqdm import tqdm
 def main():
     start_time = time.time()
     
-    projects_dir = os.path.expanduser('~/marketing')
+    projects_dir = os.path.dirname(os.path.abspath(__file__))
     scraper_dir = os.path.join(projects_dir, 'scraper')
     output_dir = os.path.join(scraper_dir, 'gmaps-output')
     results_file = os.path.join(output_dir, 'results.csv')
@@ -43,7 +43,7 @@ def main():
 
     print("Generating Queries")
     
-    env_file = os.path.expanduser('~/marketing/.env')
+    env_file = os.path.join(projects_dir, '.env')
     server_ip = None
     if os.path.exists(env_file):
         with open(env_file, 'r') as ef:
@@ -53,26 +53,26 @@ def main():
                     
     if server_ip:
         import requests
-        print(f"Syncing scraper configuration from HomeServer ({server_ip})...")
+        print(f"Syncing scraper configuration from server ({server_ip})...")
         try:
             for filename in ['cities.txt', 'types.txt']:
                 res = requests.get(f"http://{server_ip}:5001/api/config/{filename}", timeout=5)
                 if res.status_code == 200:
                     text = res.json().get('text', '')
                     if text:
-                        file_path = os.path.join(projects_dir, 'programs', 'queries', filename)
+                        file_path = os.path.join(projects_dir, 'backend', 'config', filename)
                         with open(file_path, 'w', encoding='utf-8') as f:
                             f.write(text)
         except Exception as e:
-            print(f"Warning: Failed to sync config from HomeServer: {e}")
+            print(f"Warning: Failed to sync config from server: {e}")
     
-    db_path = os.path.join(projects_dir, 'programs', 'db', 'cities.db')
+    db_path = os.path.join(projects_dir, 'backend', 'db', 'cities.db')
     if not os.path.exists(db_path):
         print("cities.db not found. Building database")
-        build_db_script = os.path.join(projects_dir, 'programs', 'db', 'build_db.py')
-        subprocess.run([sys.executable, build_db_script], check=True)
+        build_db_script = os.path.join(projects_dir, 'backend', 'db', 'build_db.py')
+        subprocess.run([sys.executable, build_db_script], cwd=os.path.dirname(build_db_script), check=True)
         
-    queries_script = os.path.join(projects_dir, 'programs', 'queries', 'queries.py')
+    queries_script = os.path.join(projects_dir, 'backend', 'config', 'queries.py')
     subprocess.run([sys.executable, queries_script], check=True)
 
     if not os.path.exists(queries_csv):
@@ -109,7 +109,7 @@ def main():
         print(f"Backed up {backup_lines} lines to {os.path.basename(backup_file)}")
         os.remove(results_file)
 
-    subprocess.run(["podman", "rm", "-f", container_name], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["podman", "--remote", "rm", "-f", container_name], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
     print("\nRunning Scraper")
     interrupted = False
@@ -117,8 +117,9 @@ def main():
     pbar = tqdm(grouped_cities.items(), total=total_cities, desc="Scraping", unit="city", colour="green", ncols=110)
     
     try:
+        import json
         with open(os.path.join(scraper_dir, 'eta.txt'), 'w') as ef:
-            ef.write("Calculating...")
+            json.dump({"status": "calculating", "progress": 0, "total": total_cities}, ef)
     except:
         pass
 
@@ -136,7 +137,7 @@ def main():
                 os.remove(temp_results)
                 
             cmd = [
-                "podman", "run",
+                "podman", "--remote", "run",
                 "--name", container_name,
                 "-v", "gmaps-playwright-cache:/opt",
                 "-v", f"{os.path.abspath(temp_queries)}:/queries.txt:ro",
@@ -164,15 +165,16 @@ def main():
                                 rf.write(lines[0])
                             rf.writelines(lines[1:])
                             
-            subprocess.run(["podman", "rm", "-f", container_name], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            subprocess.run(["podman", "--remote", "rm", "-f", container_name], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
             completed += 1
             avg_time = (time.time() - loop_start_time) / completed
             remaining_cities = total_cities - completed
             eta_seconds = int(avg_time * remaining_cities)
             try:
+                import json
                 with open(os.path.join(scraper_dir, 'eta.txt'), 'w') as ef:
-                    ef.write(f"{eta_seconds // 60}m {eta_seconds % 60}s")
+                    json.dump({"status": "running", "eta": eta_seconds, "progress": completed, "total": total_cities}, ef)
             except Exception:
                 pass
 
@@ -180,8 +182,8 @@ def main():
     except KeyboardInterrupt:
         interrupted = True
         tqdm.write("\n\n Programm Interrupted")
-        subprocess.run(["podman", "stop", "-t", "10", container_name], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-        subprocess.run(["podman", "rm", "-f", container_name], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        subprocess.run(["podman", "--remote", "stop", "-t", "10", container_name], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        subprocess.run(["podman", "--remote", "rm", "-f", container_name], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     finally:
         pbar.close()
 
@@ -195,7 +197,7 @@ def main():
 
     if not interrupted:
         print("\nPost Processing")
-        post_script = os.path.join(projects_dir, 'programs', 'postProcessing', 'main.py')
+        post_script = os.path.join(projects_dir, 'backend', 'post_processing', 'main.py')
         subprocess.run([sys.executable, post_script])
     else:
         print("\nPost Processing Skipped")

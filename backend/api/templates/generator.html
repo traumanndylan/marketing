@@ -4,11 +4,9 @@
 <div class="card" style="margin-bottom:1.5rem; display:flex; flex-direction:column;">
     <div class="card-title" style="display:flex; justify-content:space-between; align-items:center;">
         <span><i class="fa-solid fa-earth-americas"></i> City List Generator</span>
-        <select id="mapRegionSelect" onchange="changeMapRegion()"
-            style="width:150px; padding:0.3rem; font-size:0.8rem;">
-            <option value="world">World</option>
-            <option value="us_aea_en">United States</option>
-        </select>
+        <button id="backToWorldBtn" class="btn" style="display:none;" onclick="changeMapRegion('world')">
+            <i class="fa-solid fa-arrow-left"></i> Back to World
+        </button>
     </div>
     <div style="display:grid; grid-template-columns: 2fr 1fr; gap:1.5rem;">
         <div id="worldMap"
@@ -22,8 +20,8 @@
                     None</div>
             </div>
             <div>
-                <label style="font-size:.8rem;color:var(--muted);display:block;margin-bottom:.5rem;">Population Cutoff: <span id="popVal" style="color:var(--accent);font-weight:600;">50,000</span></label>
-                <input type="range" id="popSlider" min="5000" max="500000" step="5000" value="50000"
+                <label style="font-size:.8rem;color:var(--muted);display:block;margin-bottom:.5rem;">Population Cutoff: <span id="popVal" style="color:var(--accent);font-weight:600;">15,000</span></label>
+                <input type="range" id="popSlider" min="5000" max="500000" step="5000" value="15000"
                     style="width:100%; cursor:pointer;"
                     oninput="document.getElementById('popVal').innerText=parseInt(this.value).toLocaleString()">
             </div>

@@ -37,19 +37,42 @@
             <button class="btn btn-primary" onclick="saveServerIp()" style="margin-top:.5rem;"><i
                     class="fa-solid fa-save"></i> Save IP</button>
         </div>
-        <button class="btn btn-primary" onclick="runScraper()" style="width:100%;margin-top:1.5rem;"><i
-                class="fa-solid fa-play"></i> Run Scraper</button>
+        <div style="display:flex; gap:1rem; margin-top:1.5rem;">
+            <button class="btn btn-primary" onclick="runScraper()" style="flex:1;"><i class="fa-solid fa-play"></i> Run
+                Scraper</button>
+            <button class="btn" onclick="stopScraper()"
+                style="flex:1; background:var(--alert); color:white; border:none;"><i class="fa-solid fa-stop"></i> Stop
+                Scraper</button>
+        </div>
 
-        <div style="margin-top:1rem; display:flex; justify-content:space-between; align-items:flex-end;">
+        <div style="margin-top:1rem; display:flex; justify-content:space-between; align-items:center;">
             <div>
                 <div style="font-size: .8rem; color: var(--muted); margin-bottom: .25rem;">ETA</div>
-                <div id="scraperEta" style="font-size: 1.2rem; font-weight: 600; color: var(--accent);">—</div>
+                <div id="scraperEta"
+                    style="font-size: 1.2rem; font-weight: 600; color: var(--accent); min-width: 80px;">--:--</div>
+            </div>
+            <div style="flex:1; margin-left: 1.5rem;">
+                <div
+                    style="font-size: .8rem; color: var(--muted); margin-bottom: .4rem; display:flex; justify-content:space-between;">
+                    <span>Progress</span>
+                    <span id="scraperProgressText">0%</span>
+                </div>
+                <div style="height: 8px; background: var(--surface2); border-radius: 4px; overflow: hidden;">
+                    <div id="scraperProgressBar"
+                        style="height: 100%; width: 0%; background: var(--green); transition: width 0.3s ease;"></div>
+                </div>
             </div>
         </div>
-        
+
         <div style="margin-top:1rem; flex:1; display:flex; flex-direction:column;">
-            <div style="font-size: .8rem; color: var(--muted); margin-bottom: .25rem;">Scraper Logs</div>
-            <div class="logs-box" id="scraperLogsContainer" style="height:150px; font-size:0.75rem;">Waiting for scraper to start...</div>
+            <div
+                style="font-size: .8rem; color: var(--muted); margin-bottom: .25rem; display:flex; justify-content:space-between; align-items:center;">
+                <span>Scraper Logs</span>
+                <button class="btn" onclick="clearLogs('scraper')"
+                    style="padding: 0.2rem 0.6rem; font-size: 0.75rem;"><i class="fa-solid fa-trash"></i> Clear</button>
+            </div>
+            <div class="logs-box" id="scraperLogsContainer" style="height:150px; font-size:0.75rem;">Waiting for scraper
+                to start...</div>
         </div>
     </div>
 </div>

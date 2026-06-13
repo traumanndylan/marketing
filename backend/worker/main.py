@@ -147,7 +147,7 @@ def main():
         return
 
     if not os.path.exists(DB_FILE):
-        sys.exit(f"Error: {DB_FILE} not found. Run scraper first.")
+        sys.exit(f"Error: {DB_FILE} not found.")
 
     conn = sqlite3.connect(DB_FILE)
     conn.row_factory = sqlite3.Row
@@ -216,7 +216,8 @@ def main():
             if sent_count >= limit:
                 break
 
-            lead_category = row["category"] if row["category"] else "default"
+            import re
+            lead_category = re.sub(r'[^a-z0-9]+', '-', row["category"].lower()) if row["category"] else "default"
             message_text = get_message(country_code, category=lead_category)
 
             print(f"  [{sent_count + 1}/{limit}] Sending to {name} ({phone})...")
